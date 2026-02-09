@@ -9,9 +9,9 @@ const Footer = () => {
                 {/* Left-side */}
                 <div className="max-w-sm">
                     <img
-                        src={assets.logo2}
+                        src={assets.logo}
                         alt="logo"
-                        className="mb-4 h-14 md:h-20 lg:h-28 w-auto"
+                        className="mb-4 h-8 md:h-9 lg:h-28 w-auto invert opacity-"
                     />
                     <p className="mt-6 text-sm text-gray-500">
                         Discover Bangalore's most extraordinary places to stay, from boutique PGs and hostels to premium long-term accommodations designed for comfort and convenience.
