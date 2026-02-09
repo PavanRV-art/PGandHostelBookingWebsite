@@ -3,6 +3,8 @@ import Navbar from './components/Navbar'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home';
 import AllRooms from './pages/AllRooms';
+import Footer from './components/Footer';
+
 
 
 
@@ -20,8 +22,8 @@ const App = () => {
           <Route path='/rooms' element={<AllRooms />} />
 
         </Routes>
-
       </div>
+      <Footer />
     </div >
   )
 }
