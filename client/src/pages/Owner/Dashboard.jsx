@@ -7,8 +7,8 @@ const Dashboard = () => {
     const [dashboardData, setDashboardData] = useState(dashboardDummyData)
 
     return (
-        <div>
-            <Title
+        <div className="mt-18">
+            < Title
                 align='left'
                 font='outfit'
                 title='Dashboard'
@@ -103,7 +103,7 @@ const Dashboard = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div >
     )
 }
 

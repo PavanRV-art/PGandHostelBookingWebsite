@@ -28,6 +28,7 @@ const Navbar = () => {
         { name: "PG", path: "/rooms" },
         { name: "Hostel", path: "/hostel" },
         { name: "About", path: "/about" },
+        { name: "Dashboard", path: "/dashboard" },
     ];
 
     const [isScrolled, setIsScrolled] = useState(false);
@@ -63,7 +64,8 @@ const Navbar = () => {
                 <img
                     src={assets.logo}
                     alt="logo"
-                    className={`h-9 ${isScrolled ? "invert opacity-80" : ""}`}
+                    className={`w-40 h-auto object-contain ${isScrolled ? "invert opacity-80" : ""}`}
+
                 />
             </Link >
 
@@ -85,11 +87,11 @@ const Navbar = () => {
                     ))
                 }
 
-                < button
+                {/* < button
                     className={`border px-4 py-1 text-sm font-light rounded-full cursor-pointer ${isScrolled ? 'text-black' : 'text-white'} transition-all`}
                 >
                     Dashboard
-                </button >
+                </button > */}
             </div >
 
             {/* Desktop Right */}
@@ -157,9 +159,9 @@ const Navbar = () => {
                     ))
                 }
 
-                <button className="border px-4 py-1 text-sm rounded-full">
+                {/* <button className="border px-4 py-1 text-sm rounded-full">
                     Dashboard
-                </button>
+                </button> */}
 
                 {
                     !user && (

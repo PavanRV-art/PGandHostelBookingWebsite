@@ -118,7 +118,7 @@ export const roomCommonData = [
 // User Dummy Data
 export const userDummyData = {
     "_id": "user_2unqyL4diJFP1E3pIBnasc7w8hP",
-    "username": "Great Stack",
+    "username": "Indu Reddy",
     "email": "user.greatstack@gmail.com",
     "image": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzJ2N2c5YVpSSEFVYVUxbmVYZ2JkSVVuWnFzWSJ9",
     "role": "hotelOwner",
@@ -161,7 +161,7 @@ export const roomsDummyData = [
         "_id": "67f76452197ac559e4089b8e",
         "hotel": hotelDummyData,
         "roomType": "Double Bed",
-        "pricePerNight": 6999,
+        "pricePerNight": 18999,
         "amenities": ["Room Service", "Mountain View", "Pool Access"],
         "images": [roomImg2, roomImg3, roomImg4, roomImg1],
         "isAvailable": true,
@@ -173,7 +173,7 @@ export const roomsDummyData = [
         "_id": "67f76406197ac559e4089b82",
         "hotel": hotelDummyData,
         "roomType": "Double Bed",
-        "pricePerNight": 8999,
+        "pricePerNight": 15999,
         "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
         "images": [roomImg3, roomImg4, roomImg1, roomImg2],
         "isAvailable": true,
@@ -185,7 +185,7 @@ export const roomsDummyData = [
         "_id": "67f763d8197ac559e4089b7a",
         "hotel": hotelDummyData,
         "roomType": "Single Bed",
-        "pricePerNight": 19999,
+        "pricePerNight": 8999,
         "amenities": ["Free WiFi", "Room Service", "Pool Access"],
         "images": [roomImg4, roomImg1, roomImg2, roomImg3],
         "isAvailable": true,
@@ -194,8 +194,172 @@ export const roomsDummyData = [
         "__v": 0
     }
 ]
+// --------------------------------hostel-------------------------------------------------------
 
 
+// User Dummy Data
+export const userhostelDummyData = {
+    "_id": "user_2unqyL4diJFP1E3pIBnasc7w8hP",
+    "username": "Nandini",
+    "email": "user.greatstack@gmail.com",
+    "image": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzJ2N2c5YVpSSEFVYVUxbmVYZ2JkSVVuWnFzWSJ9",
+    "role": "hotelOwner",
+    "createdAt": "2025-03-25T09:29:16.367Z",
+    "updatedAt": "2025-04-10T06:34:48.719Z",
+    "__v": 1,
+    "recentSearchedCities": [
+        "BTM Layout"
+    ]
+}
+
+// ------------------hostel 1-------------
+// Hotel Dummy Data
+export const hostelDummyData = {
+    "_id": "67f76393197ac559e4089b72",
+    "name": "Zolo Hamilton hostel",
+    "address": "15th Cross Road, Green Garden Layout, Silver Springs Layout, Munnekollal, Bengaluru ",
+    "contact": "+918884518010",
+    "owner": userhostelDummyData,
+    "city": "BTM Layout",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const hostelroomsDummyData = [
+    {
+        "_id": "67f7647c197ac559e4089b96",
+        "hotel": hostelDummyData,
+        "roomType": "Single Bed",
+        "pricePerNight": 12999,
+        "amenities": ["Room Service", "Food", "Wi-fi"],
+        "images": [roomImg1, roomImg2, roomImg3, roomImg4],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:26:04.013Z",
+        "updatedAt": "2025-04-10T06:26:04.013Z",
+        "__v": 0
+    },
+]
+// ------------------hostel 2-------------------
+// Hotel Dummy Data
+export const hostel2DummyData = {
+    "_id": "67f76393197ac559e4089b72",
+    "name": "The Little Blue Window Hostel ",
+    "address": "13th Main Road, Sunshine Colony, Stage 2, 2nd Stage, BTM Layout 2nd Stage, BTM Layout, Bengaluru",
+    "contact": "+918553406098",
+    "owner": userhostelDummyData,
+    "city": "BTM Layout",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const hostel2roomsDummyData = [
+    {
+        "_id": "67f76406197ac559e4089b82",
+        "hotel": hostel2DummyData,
+        "roomType": "Double Bed",
+        "pricePerNight": 9999,
+        "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
+        "images": [roomImg3, roomImg4, roomImg1, roomImg2],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:24:06.285Z",
+        "updatedAt": "2025-04-10T06:24:06.285Z",
+        "__v": 0
+    },
+]
+// -----------------hostel 3----------
+// Hotel Dummy Data
+export const hostel3DummyData = {
+    "_id": "67f76393197ac559e4089b72",
+    "name": " Oxygen hostel for Gents ",
+    "address": "78/79, 5th Cross, Ramanjaneya Layout, Opposite Kalamandir, Marathahalli Bridge, Bengaluru",
+    "contact": "+918553406098",
+    "owner": userhostelDummyData,
+    "city": "BTM Layout",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const hostel3roomsDummyData = [
+    {
+        "_id": "67f76406197ac559e4089b82",
+        "hotel": hostel3DummyData,
+        "roomType": "Double Bed",
+        "pricePerNight": 6999,
+        "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
+        "images": [roomImg3, roomImg4, roomImg1, roomImg2],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:24:06.285Z",
+        "updatedAt": "2025-04-10T06:24:06.285Z",
+        "__v": 0
+    },
+]
+
+// -----------------hostel 4----------
+// Hotel Dummy Data
+export const hostel4DummyData = {
+    "_id": "67f76393197ac559e4089b72",
+    "name": " The Hosteller Bangalore ",
+    "address": "124, Brigade Rd, opposite Brigade Tower, near Vellara Junction, Ashok Nagar, Bengaluru",
+    "contact": "+918553406098",
+    "owner": userhostelDummyData,
+    "city": "BTM Layout",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const hostel4roomsDummyData = [
+    {
+        "_id": "67f76406197ac559e4089b82",
+        "hotel": hostel4DummyData,
+        "roomType": "Double Bed",
+        "pricePerNight": 16999,
+        "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
+        "images": [roomImg3, roomImg4, roomImg1, roomImg2],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:24:06.285Z",
+        "updatedAt": "2025-04-10T06:24:06.285Z",
+        "__v": 0
+    },
+]
+// -----------------hostel 5----------
+// Hotel Dummy Data
+export const hostel5DummyData = {
+    "_id": "67f76393197ac559e4089b72",
+    "name": " Zostel Bangalore  ",
+    "address": "17th Main, 1st Cross Rd, HAL 2nd Stage, Indiranagar, Bengaluru",
+    "contact": "+918553406098",
+    "owner": userhostelDummyData,
+    "city": "BTM Layout",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const hostel5roomsDummyData = [
+    {
+        "_id": "67f76406197ac559e4089b82",
+        "hotel": hostel5DummyData,
+        "roomType": "Double Bed",
+        "pricePerNight": 11999,
+        "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
+        "images": [roomImg3, roomImg4, roomImg1, roomImg2],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:24:06.285Z",
+        "updatedAt": "2025-04-10T06:24:06.285Z",
+        "__v": 0
+    },
+]
+
+// ---------------------------------hostel-end---------------------------------------------------
 
 // User Bookings Dummy Data
 export const userBookingsDummyData = [
@@ -252,7 +416,7 @@ export const userBookingsDummyData = [
 // Dashboard Dummy Data
 export const dashboardDummyData = {
     "totalBookings": 3,
-    "totalRevenue": 897,
+    "totalRevenue": 6999,
     "bookings": userBookingsDummyData
 }
 

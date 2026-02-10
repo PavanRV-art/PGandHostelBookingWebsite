@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom'
 import {
     assets,
     facilityIcons,
-    roomsDummyData,
-    roomCommonData,
+    roomsDummyData, hostelroomsDummyData, hostel2roomsDummyData,
+    roomCommonData, hostel3roomsDummyData, hostel4roomsDummyData, hostel5roomsDummyData
 } from '../assets/assets';
 import StarRating from '../components/starRating'
 
@@ -13,9 +13,49 @@ const RoomDetails = () => {
 
     const [room, setRoom] = useState(null)
     const [mainImage, setMainImage] = useState('')
-
+    // ------------------------
     useEffect(() => {
         const foundRoom = roomsDummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------
+    useEffect(() => {
+        const foundRoom = hostelroomsDummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------
+    useEffect(() => {
+        const foundRoom = hostel2roomsDummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------
+    useEffect(() => {
+        const foundRoom = hostel3roomsDummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------
+    useEffect(() => {
+        const foundRoom = hostel4roomsDummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------
+    useEffect(() => {
+        const foundRoom = hostel5roomsDummyData.find((r) => r._id === id)
         if (foundRoom) {
             setRoom(foundRoom)
             setMainImage(foundRoom.images[0])
