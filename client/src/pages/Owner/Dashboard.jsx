@@ -3,46 +3,44 @@ import Title from '../../components/Title'
 import { assets, dashboardDummyData } from '../../assets/assets'
 
 const Dashboard = () => {
-
-    const [dashboardData, setDashboardData] = useState(dashboardDummyData)
+    const [dashboardData] = useState(dashboardDummyData)
 
     return (
-        <div className="mt-18">
-            < Title
-                align='left'
-                font='outfit'
-                title='Dashboard'
-                subTitle='Monitor your room listings, track bookings and analyze revenue—all in one place. Stay updated with real-time insights to ensure smooth operations.'
+        <div className="mt-24">
+            <Title
+                align="left"
+                font="outfit"
+                title="Dashboard"
+                subTitle="Monitor your room listings, track bookings and analyze revenue—all in one place. Stay updated with real-time insights to ensure smooth operations."
             />
 
-            <div className='flex gap-4 my-8'>
-                {/* ---- ----Total Bookings-- */}
-                <div className='bg-primary/3 border border-primary/10 rounded flex p-4 pr-8'>
+            {/* -------- Stats Cards -------- */}
+            <div className="flex flex-wrap justify-center gap-6 my-10">
+                {/* Total Bookings */}
+                <div className="bg-primary/3 border border-primary/10 rounded flex items-center p-6 pr-10">
                     <img
                         src={assets.totalBookingIcon}
                         alt=""
-                        className='max-sm:hidden h-10'
+                        className="max-sm:hidden h-12"
                     />
-
-                    <div className='flex flex-col sm:ml-4 font-medium'>
-                        <p className='text-blue-500 text-lg'>Total Bookings</p>
-                        <p className='text-neutral-400 text-base'>
+                    <div className="flex flex-col sm:ml-6 font-medium">
+                        <p className="text-blue-600 text-xl">Total Bookings</p>
+                        <p className="text-neutral-500 text-2xl font-semibold">
                             {dashboardData.totalBookings}
                         </p>
                     </div>
                 </div>
 
-                {/* ---- ----Total Revenue-- */}
-                <div className='bg-primary/3 border border-primary/10 rounded flex p-4 pr-8'>
+                {/* Total Revenue */}
+                <div className="bg-primary/3 border border-primary/10 rounded flex items-center p-6 pr-10">
                     <img
                         src={assets.totalRevenueIcon}
                         alt=""
-                        className='max-sm:hidden h-10'
+                        className="max-sm:hidden h-12"
                     />
-
-                    <div className='flex flex-col sm:ml-4 font-medium'>
-                        <p className='text-blue-500 text-lg'>Total Revenue</p>
-                        <p className='text-neutral-400 text-base'>
+                    <div className="flex flex-col sm:ml-6 font-medium">
+                        <p className="text-blue-600 text-xl">Total Revenue</p>
+                        <p className="text-neutral-500 text-2xl font-semibold">
                             ₹{dashboardData.totalRevenue}
                         </p>
                     </div>
@@ -50,49 +48,52 @@ const Dashboard = () => {
             </div>
 
             {/* -------- Recent Bookings -------- */}
-            <h2 className='text-xl text-blue-950/70 font-medium mb-5'>
+            <h2 className="text-2xl text-blue-950/80 font-semibold mb-6 text-center">
                 Recent Bookings
             </h2>
 
-            <div className='w-full max-w-3xl text-left border border-gray-300 rounded-lg max-h-80 overflow-y-scroll'>
-                <table className='w-full'>
-                    <thead className='bg-gray-50'>
+
+            <div className="w-full max-w-5xl mx-auto border border-gray-300 rounded-xl max-h-[420px] overflow-y-auto">
+
+                <table className="w-full text-left">
+                    <thead className="bg-gray-100">
                         <tr>
-                            <th className='py-3 px-4 text-gray-800 font-medium'>
-                                User Name
+                            <th className="py-4 px-6 text-gray-800 text-lg font-semibold">
+                                Owner's Name
                             </th>
-                            <th className='py-3 px-4 text-gray-800 font-medium max-sm:hidden'>
+                            <th className="py-4 px-6 text-gray-800 text-lg font-semibold max-sm:hidden">
                                 Room Name
                             </th>
-                            <th className='py-3 px-4 text-gray-800 font-medium text-center'>
+                            <th className="py-4 px-6 text-gray-800 text-lg font-semibold text-center">
                                 Total Amount
                             </th>
-                            <th className='py-3 px-4 text-gray-800 font-medium text-center'>
+                            <th className="py-4 px-6 text-gray-800 text-lg font-semibold text-center">
                                 Payment Status
                             </th>
                         </tr>
                     </thead>
 
-                    <tbody className='text-sm'>
+                    <tbody className="text-base">
                         {dashboardData.bookings.map((item, index) => (
-                            <tr key={index}>
-                                <td className='py-3 px-4 text-gray-700 border-t border-gray-300'>
+                            <tr key={index} className="hover:bg-gray-50">
+                                <td className="py-4 px-6 text-gray-700 border-t">
                                     {item.user.username}
                                 </td>
 
-                                <td className='py-3 px-4 text-gray-700 border-t border-gray-300 max-sm:hidden'>
+                                <td className="py-4 px-6 text-gray-700 border-t max-sm:hidden">
                                     {item.room.roomType}
                                 </td>
 
-                                <td className='py-3 px-4 text-gray-700 border-t border-gray-300 text-center'>
+                                <td className="py-4 px-6 text-gray-700 border-t text-center">
                                     ₹{item.totalPrice}
                                 </td>
 
-                                <td className='py-3 px-4 border-t border-gray-300 flex'>
+                                <td className="py-4 px-6 border-t flex justify-center">
                                     <button
-                                        className={`py-1 px-3 text-xs rounded-full mx-auto ${item.isPaid
-                                            ? 'bg-green-200 text-green-600'
-                                            : 'bg-amber-200 text-yellow-600'
+                                        className={`py-1.5 px-4 text-sm font-medium rounded-full
+                                        ${item.isPaid
+                                                ? 'bg-green-200 text-green-700'
+                                                : 'bg-amber-200 text-yellow-700'
                                             }`}
                                     >
                                         {item.isPaid ? 'Completed' : 'Pending'}
@@ -103,7 +104,7 @@ const Dashboard = () => {
                     </tbody>
                 </table>
             </div>
-        </div >
+        </div>
     )
 }
 

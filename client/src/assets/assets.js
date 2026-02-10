@@ -397,9 +397,9 @@ export const userBookingsDummyData = [
     },
     {
         "_id": "67f76810994a731e97d3b8b4",
-        "user": userDummyData,
-        "room": roomsDummyData[3],
-        "hotel": hotelDummyData,
+        "user": userhostelDummyData,
+        "room": hostelroomsDummyData[0],
+        "hotel": hostelDummyData,
         "checkInDate": "2025-04-11T00:00:00.000Z",
         "checkOutDate": "2025-04-12T00:00:00.000Z",
         "totalPrice": 19999,

@@ -8,6 +8,7 @@ import HotelReg from './components/HotelReg'
 import Home from './pages/Home'
 import AllRooms from './pages/AllRooms'
 import HostelRooms from './pages/HostelRooms'
+import About from './pages/About'
 
 import RoomDetails from './pages/RoomDetails'
 import MyBookings from './pages/MyBookings'
@@ -36,11 +37,12 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/rooms" element={<AllRooms />} />
           <Route path="/hostel" element={<HostelRooms />} />
+          <Route path="/about" element={<About />} />
           <Route path="/rooms/:id" element={<RoomDetails />} />
           <Route path="/my-bookings" element={<MyBookings />} />
 
           {/* Dashboard Routes */}
-          <Route path="/dashboard" element={<Layout />}>
+          <Route path="/owner" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="add-room" element={<AddRoom />} />
             <Route path="list-room" element={<ListRoom />} />

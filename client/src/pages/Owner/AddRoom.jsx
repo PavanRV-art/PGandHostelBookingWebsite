@@ -24,98 +24,121 @@ const AddRoom = () => {
     })
 
     return (
-        <form onSubmit={(e) => e.preventDefault()}>
-            <Title
-                align='left'
-                font='outfit'
-                title='Add Room'
-                subTitle='Fill in the details carefully and accurate room details, pricing, and amenities, to enhance the user booking experience.'
-            />
+        <div className="flex flex-col-reverse lg:flex-row items-start justify-between
+        pt-28 md:pt-36 px-4 md:px-16 lg:px-24 xl:px-32">
 
-            <p className='text-gray-800 mt-10'>Images</p>
+            <form onSubmit={(e) => e.preventDefault()} className="w-full max-w-2xl">
 
-            <div className='grid grid-cols-2 sm:flex gap-4 my-2 flex-wrap'>
-                {Object.keys(images).map((key) => (
-                    <label htmlFor={`roomImage${key}`} key={key}>
-                        <img
-                            className='max-h-13 cursor-pointer opacity-80'
-                            src={images[key] ? URL.createObjectURL(images[key]) : assets.uploadArea}
-                            alt=""
-                        />
-                        <input
-                            type="file"
-                            accept="image/*"
-                            id={`roomImage${key}`}
-                            hidden
+                <Title
+                    align="left"
+                    font="outfit"
+                    title="Add Room"
+                    subTitle="Fill in the details carefully and accurate room details, pricing, and amenities, to enhance the user booking experience."
+                />
+
+                {/* Images */}
+                <p className="text-lg font-medium text-gray-800 mt-10">
+                    Images
+                </p>
+
+                <div className="grid grid-cols-2 sm:flex gap-6 my-4 flex-wrap">
+                    {Object.keys(images).map((key) => (
+                        <label htmlFor={`roomImage${key}`} key={key}>
+                            <img
+                                className="h-20 cursor-pointer opacity-80 hover:opacity-100 transition"
+                                src={images[key]
+                                    ? URL.createObjectURL(images[key])
+                                    : assets.uploadArea}
+                                alt=""
+                            />
+                            <input
+                                type="file"
+                                accept="image/*"
+                                id={`roomImage${key}`}
+                                hidden
+                                onChange={e =>
+                                    setImages({ ...images, [key]: e.target.files[0] })
+                                }
+                            />
+                        </label>
+                    ))}
+                </div>
+
+                {/* Type & Price */}
+                <div className="w-full flex max-sm:flex-col sm:gap-6 mt-6">
+                    <div className="flex-1 max-w-56">
+                        <p className="text-lg font-medium text-gray-800">
+                            Types
+                        </p>
+                        <select
+                            value={inputs.roomType}
                             onChange={e =>
-                                setImages({ ...images, [key]: e.target.files[0] })
+                                setInputs({ ...inputs, roomType: e.target.value })
                             }
-                        />
-                    </label>
-                ))}
-            </div>
-
-            <div className='w-full flex max-sm:flex-col sm:gap-4 mt-4'>
-                <div className='flex-1 max-w-48'>
-                    <p className='text-gray-800 mt-4'> Types</p>
-                    <select
-                        value={inputs.roomType}
-                        onChange={e =>
-                            setInputs({ ...inputs, roomType: e.target.value })
-                        }
-                        className='border opacity-70 border-gray-300 mt-1 rounded p-2 w-full'
-                    >
-                        <option value="">Select Types</option>
-                        <option value="Single Bed">Mens PG</option>
-                        <option value="Double Bed">Ladies PG</option>
-                        <option value="Luxury Room">CoLiving PG</option>
-                        <option value="Family Suite">Hostel</option>
-                    </select>
-                </div>
-
-                <div>
-                    <p className='mt-4 text-gray-800'>
-                        Price <span className='text-xs'></span>
-                    </p>
-                    <input
-                        type="number"
-                        className='border border-gray-300 mt-1 rounded p-2 w-24'
-                        value={inputs.pricePerNight}
-                        onChange={e =>
-                            setInputs({ ...inputs, pricePerNight: Number(e.target.value) })
-                        }
-                    />
-                </div>
-            </div>
-
-            <p className='text-gray-800 mt-4'>Amenities</p>
-
-            <div className='flex flex-col flex-wrap mt-1 text-gray-400 max-w-sm'>
-                {Object.keys(inputs.amenities).map((amenity, index) => (
-                    <div key={index}>
-                        <input
-                            type="checkbox"
-                            id={`amenities${index}`}
-                            checked={inputs.amenities[amenity]}
-                            onChange={() =>
-                                setInputs({
-                                    ...inputs,
-                                    amenities: {
-                                        ...inputs.amenities,
-                                        [amenity]: !inputs.amenities[amenity]
-                                    }
-                                })
-                            }
-                        />
-                        <label htmlFor={`amenities${index}`}>{amenity}</label>
+                            className="border border-gray-300 mt-2 rounded p-3 w-full text-base"
+                        >
+                            <option value="">Select Types</option>
+                            <option value="Single Bed">Mens PG</option>
+                            <option value="Double Bed">Ladies PG</option>
+                            <option value="Luxury Room">CoLiving PG</option>
+                            <option value="Family Suite">Hostel</option>
+                        </select>
                     </div>
-                ))}
-            </div>
 
-            <button className='bg-primary text-white px-8 py-2 rounded mt-8'>
-                Add Room
-            </button>
-        </form>
+                    <div>
+                        <p className="text-lg font-medium text-gray-800">
+                            Price
+                        </p>
+                        <input
+                            type="number"
+                            className="border border-gray-300 mt-2 rounded p-3 w-32 text-base"
+                            value={inputs.pricePerNight}
+                            onChange={e =>
+                                setInputs({ ...inputs, pricePerNight: Number(e.target.value) })
+                            }
+                        />
+                    </div>
+                </div>
+
+                {/* Amenities */}
+                <p className="text-lg font-medium text-gray-800 mt-8">
+                    Amenities
+                </p>
+
+                <div className="flex flex-col gap-3 mt-3 text-gray-600 max-w-sm text-base">
+                    {Object.keys(inputs.amenities).map((amenity, index) => (
+                        <label
+                            key={index}
+                            htmlFor={`amenities${index}`}
+                            className="flex items-center gap-3 cursor-pointer"
+                        >
+                            <input
+                                type="checkbox"
+                                id={`amenities${index}`}
+                                checked={inputs.amenities[amenity]}
+                                onChange={() =>
+                                    setInputs({
+                                        ...inputs,
+                                        amenities: {
+                                            ...inputs.amenities,
+                                            [amenity]: !inputs.amenities[amenity]
+                                        }
+                                    })
+                                }
+                                className="w-4 h-4"
+                            />
+                            {amenity}
+                        </label>
+                    ))}
+                </div>
+
+                {/* Button */}
+                <button className="bg-primary text-white px-10 py-3 rounded mt-10 text-lg font-medium hover:bg-primary-dull transition">
+                    Add Room
+                </button>
+
+            </form>
+        </div>
     )
 }
 
