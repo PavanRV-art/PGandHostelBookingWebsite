@@ -29,6 +29,32 @@ import roomImg1 from './roomImg1.png'
 import roomImg2 from './roomImg2.png'
 import roomImg3 from './roomImg3.png'
 import roomImg4 from './roomImg4.png'
+// ----------------------------------------
+import hostelRoom1Img from './hostelRoom1Img.png'
+import hostelRoom2Img from './hostelRoom2Img.png'
+import hostelRoom3Img from './hostelRoom3Img.png'
+import hostelRoom4Img from './hostelRoom4Img.png'
+// ----------------------------------------
+import hostel2Room1Img from './hostel2Room1Img.png'
+import hostel2Room2Img from './hostel2Room2Img.png'
+import hostel2Room3Img from './hostel2Room3Img.png'
+import hostel2Room4Img from './hostel2Room4Img.png'
+// ----------------------------------------------------
+import hostel3Room1Img from './hostel3Room1Img.png'
+import hostel3Room2Img from './hostel3Room2Img.png'
+import hostel3Room3Img from './hostel3Room3Img.png'
+import hostel3Room4Img from './hostel3Room4Img.png'
+// ----------------------------------------------------
+import hostel4Room1Img from './hostel4Room1Img.png'
+import hostel4Room2Img from './hostel4Room2Img.png'
+import hostel4Room3Img from './hostel4Room3Img.png'
+import hostel4Room4Img from './hostel4Room4Img.png'
+// ----------------------------------------------------
+import hostel5Room1Img from './hostel5Room1Img.png'
+import hostel5Room2Img from './hostel5Room2Img.png'
+import hostel5Room3Img from './hostel5Room3Img.png'
+import hostel5Room4Img from './hostel5Room4Img.png'
+// ----------------------------------------------------
 import regImage from './regImage.png'
 import exclusiveOfferCardImg1 from "./exclusiveOfferCardImg1.png";
 import exclusiveOfferCardImg2 from "./exclusiveOfferCardImg2.png";
@@ -115,6 +141,7 @@ export const roomCommonData = [
     { icon: assets.heartIcon, title: "Smooth Check-In", description: "100% of guests gave check-in a 5-star rating." },
 ];
 
+// ---------------------------------------PG------------------------------------------------------------------------
 // User Dummy Data
 export const userDummyData = {
     "_id": "user_2unqyL4diJFP1E3pIBnasc7w8hP",
@@ -151,7 +178,7 @@ export const roomsDummyData = [
         "roomType": "Single Bed",
         "pricePerNight": 7999,
         "amenities": ["Room Service", "Food", "Wi-fi"],
-        "images": [roomImg1, roomImg2, roomImg3, roomImg4],
+        "images": [roomImg1],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
@@ -163,7 +190,7 @@ export const roomsDummyData = [
         "roomType": "Double Bed",
         "pricePerNight": 18999,
         "amenities": ["Room Service", "Mountain View", "Pool Access"],
-        "images": [roomImg2, roomImg3, roomImg4, roomImg1],
+        "images": [roomImg2],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:25:22.593Z",
         "updatedAt": "2025-04-10T06:25:22.593Z",
@@ -175,7 +202,7 @@ export const roomsDummyData = [
         "roomType": "Double Bed",
         "pricePerNight": 15999,
         "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
-        "images": [roomImg3, roomImg4, roomImg1, roomImg2],
+        "images": [roomImg3],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:24:06.285Z",
         "updatedAt": "2025-04-10T06:24:06.285Z",
@@ -187,13 +214,14 @@ export const roomsDummyData = [
         "roomType": "Single Bed",
         "pricePerNight": 8999,
         "amenities": ["Free WiFi", "Room Service", "Pool Access"],
-        "images": [roomImg4, roomImg1, roomImg2, roomImg3],
+        "images": [roomImg4],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:23:20.252Z",
         "updatedAt": "2025-04-10T06:23:20.252Z",
         "__v": 0
     }
 ]
+// --------------------------------PG-end------------------------------------------------------
 // --------------------------------hostel-------------------------------------------------------
 
 
@@ -234,7 +262,7 @@ export const hostelroomsDummyData = [
         "roomType": "Single Bed",
         "pricePerNight": 12999,
         "amenities": ["Room Service", "Food", "Wi-fi"],
-        "images": [roomImg1, roomImg2, roomImg3, roomImg4],
+        "images": [hostelRoom2Img, hostelRoom1Img, hostelRoom3Img, hostelRoom4Img],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
@@ -263,7 +291,7 @@ export const hostel2roomsDummyData = [
         "roomType": "Double Bed",
         "pricePerNight": 9999,
         "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
-        "images": [roomImg3, roomImg4, roomImg1, roomImg2],
+        "images": [hostel2Room1Img, hostel2Room2Img, hostel2Room3Img, hostel2Room4Img],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:24:06.285Z",
         "updatedAt": "2025-04-10T06:24:06.285Z",
@@ -292,7 +320,7 @@ export const hostel3roomsDummyData = [
         "roomType": "Double Bed",
         "pricePerNight": 6999,
         "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
-        "images": [roomImg3, roomImg4, roomImg1, roomImg2],
+        "images": [hostel3Room1Img, hostel3Room2Img, hostel3Room3Img, hostel3Room4Img],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:24:06.285Z",
         "updatedAt": "2025-04-10T06:24:06.285Z",
@@ -322,7 +350,7 @@ export const hostel4roomsDummyData = [
         "roomType": "Double Bed",
         "pricePerNight": 16999,
         "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
-        "images": [roomImg3, roomImg4, roomImg1, roomImg2],
+        "images": [hostel4Room1Img, hostel4Room2Img, hostel4Room3Img, hostel4Room4Img],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:24:06.285Z",
         "updatedAt": "2025-04-10T06:24:06.285Z",
@@ -351,7 +379,7 @@ export const hostel5roomsDummyData = [
         "roomType": "Double Bed",
         "pricePerNight": 11999,
         "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
-        "images": [roomImg3, roomImg4, roomImg1, roomImg2],
+        "images": [hostel5Room1Img, hostel5Room2Img, hostel5Room3Img, hostel5Room4Img],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:24:06.285Z",
         "updatedAt": "2025-04-10T06:24:06.285Z",
