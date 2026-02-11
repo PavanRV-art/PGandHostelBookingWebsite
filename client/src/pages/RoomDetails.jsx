@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom'
 import {
     assets,
     facilityIcons,
-    roomsDummyData, hostelroomsDummyData, hostel2roomsDummyData,
+    roomsDummyData, pgrooms2DummyData, pgrooms3DummyData,
+    pgrooms4DummyData, pgrooms5DummyData, pgrooms6DummyData, hostelroomsDummyData,
+    pgrooms7DummyData, pgrooms8DummyData, pgrooms9DummyData, hostel2roomsDummyData,
     roomCommonData, hostel3roomsDummyData, hostel4roomsDummyData, hostel5roomsDummyData
 } from '../assets/assets';
 import StarRating from '../components/starRating'
@@ -16,6 +18,70 @@ const RoomDetails = () => {
     // ------------------------
     useEffect(() => {
         const foundRoom = roomsDummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // --------------------------------
+    useEffect(() => {
+        const foundRoom = pgrooms2DummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------------------
+    useEffect(() => {
+        const foundRoom = pgrooms3DummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------------------
+    useEffect(() => {
+        const foundRoom = pgrooms4DummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------------------------
+    useEffect(() => {
+        const foundRoom = pgrooms5DummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------------
+    useEffect(() => {
+        const foundRoom = pgrooms6DummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------
+    useEffect(() => {
+        const foundRoom = pgrooms7DummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------
+    useEffect(() => {
+        const foundRoom = pgrooms8DummyData.find((r) => r._id === id)
+        if (foundRoom) {
+            setRoom(foundRoom)
+            setMainImage(foundRoom.images[0])
+        }
+    }, [id])
+    // ---------------------------------
+    useEffect(() => {
+        const foundRoom = pgrooms9DummyData.find((r) => r._id === id)
         if (foundRoom) {
             setRoom(foundRoom)
             setMainImage(foundRoom.images[0])
@@ -145,12 +211,13 @@ const RoomDetails = () => {
                 <p className="text-2xl font-medium">
                     ₹{room.pricePerNight}
                 </p>
+
             </div>
 
             {/* Booking Form */}
-            <form className="flex flex-col md:flex-row justify-between gap-6 bg-white shadow-lg p-6 rounded-xl mt-16 max-w-6xl mx-auto">
-                <div className="flex flex-col md:flex-row gap-6 text-gray-500">
-                    <div>
+            {/* <form className="flex flex-col md:flex-row justify-between gap-6 bg-white shadow-lg p-6 rounded-xl mt-16 max-w-6xl mx-auto"> */}
+            {/* <div className="flex flex-col md:flex-row gap-6 text-gray-500"> */}
+            {/* <div>
                         <label className="font-medium">Check-In</label>
                         <input
                             type="date"
@@ -166,9 +233,9 @@ const RoomDetails = () => {
                             className="border px-3 py-2 rounded mt-1 w-full"
                             required
                         />
-                    </div>
+                    </div> */}
 
-                    {/* <div>
+            {/* <div>
                         <label className="font-medium">Guests</label>
                         <input
                             type="number"
@@ -177,15 +244,25 @@ const RoomDetails = () => {
                             required
                         />
                     </div> */}
-                </div>
+            {/* </div> */}
 
+            <div className="mt-6">
                 <button
                     type="submit"
-                    className="bg-primary text-white px-8 py-3 rounded hover:bg-primary-dull transition"
+                    className="bg-primary text-white w-full py-3 rounded-lg 
+                    text-lg font-semibold hover:bg-primary-dull 
+                    transition-all duration-300"
+
+
                 >
-                    Check Availability
+                    Book Now
                 </button>
-            </form>
+            </div>
+
+
+
+
+            {/* </form> */}
 
             {/* Common Info */}
             <div className="mt-24 space-y-4">
@@ -217,7 +294,7 @@ const RoomDetails = () => {
                 </div>
 
             </div>
-        </div>
+        </div >
     )
 }
 

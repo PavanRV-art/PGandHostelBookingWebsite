@@ -1,5 +1,8 @@
 import React from 'react'
-import { roomsDummyData } from '../assets/assets'
+import {
+    roomsDummyData, pgrooms3DummyData,
+    hostel2roomsDummyData, hostel4roomsDummyData
+} from '../assets/assets'
 import HostelCard from './HostelCard'
 import Title from './Title'
 import { useNavigate } from "react-router-dom";
@@ -14,6 +17,30 @@ const FeaturedDestination = () => {
 
             < div className='flex flex-wrap items-center justify-center gap-6 mt-20'>
                 {roomsDummyData.slice(0, 4).map((room, index) => (
+                    <HostelCard
+                        key={room._id}
+                        room={room}
+                        index={index}
+                    />
+                ))}
+
+                {pgrooms3DummyData.slice(0, 4).map((room, index) => (
+                    <HostelCard
+                        key={room._id}
+                        room={room}
+                        index={index}
+                    />
+                ))}
+
+                {hostel2roomsDummyData.slice(0, 4).map((room, index) => (
+                    <HostelCard
+                        key={room._id}
+                        room={room}
+                        index={index}
+                    />
+                ))}
+
+                {hostel4roomsDummyData.slice(0, 4).map((room, index) => (
                     <HostelCard
                         key={room._id}
                         room={room}

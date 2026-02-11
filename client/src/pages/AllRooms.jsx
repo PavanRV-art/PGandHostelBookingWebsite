@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { assets, facilityIcons, roomsDummyData } from '../assets/assets'
+import {
+    assets, facilityIcons, roomsDummyData, pgrooms4DummyData,
+    pgrooms2DummyData, pgrooms3DummyData, pgrooms5DummyData,
+    pgrooms6DummyData, pgrooms7DummyData, pgrooms8DummyData,
+    pgrooms9DummyData
+} from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 import StarRating from '../components/starRating'
 
@@ -62,18 +67,28 @@ const AllRooms = () => {
             className="flex flex-col-reverse lg:flex-row items-start justify-between
       pt-28 md:pt-36 px-4 md:px-16 lg:px-24 xl:px-32"
         >
+
             {/* ---------- Rooms Section ---------- */}
             <div className="flex-1">
                 <div className="flex flex-col items-start text-left mb-6">
-                    <h1 className="font-playfair text-4xl md:text-[40px]">
-                        PG Rooms
-                    </h1>
-                    <p className="text-sm md:text-base text-gray-500 mt-2 max-w-xl">
-                        Take advantage of our limited-time offers and special packages to
-                        enhance your stay and create unforgettable memories.
-                    </p>
+                    <div className="mb-6">
+                        <h1 className="font-playfair text-4xl md:text-[40px]">
+                            PG Rooms
+                        </h1>
+                        <p className="text-sm md:text-base text-gray-500 mt-2 max-w-xl">
+                            Take advantage of our limited-time offers and special packages to
+                            enhance your stay and create unforgettable memories.
+                        </p>
+                    </div>
+                    <div className="flex items-center border pl-4 gap-2 bg-white border-gray-500/30 h-[46px] rounded-full overflow-hidden max-w-md w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="#6B7280">
+                            <path d="M13 3C7.489 3 3 7.489 3 13s4.489 10 10 10a9.95 9.95 0 0 0 6.322-2.264l5.971 5.971a1 1 0 1 0 1.414-1.414l-5.97-5.97A9.95 9.95 0 0 0 23 13c0-5.511-4.489-10-10-10m0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8-8-3.57-8-8 3.57-8 8-8" />
+                        </svg>
+                        <input type="text" className="w-full h-full outline-none text-sm text-gray-500" />
+                        <button type="submit" className="bg-indigo-500 w-32 h-9 rounded-full text-sm text-white mr-[5px]">Search</button>
+                    </div>
                 </div>
-
+                {/* ---------------------------PG-1---------------------- */}
                 {roomsDummyData.map((room) => (
                     <div
                         key={room._id}
@@ -141,8 +156,585 @@ const AllRooms = () => {
                                 ₹{room.pricePerNight}
                             </p>
                         </div>
+
                     </div>
                 ))}
+                {/* ---------------------------PG-2---------------------- */}
+                {pgrooms2DummyData.map((room) => (
+                    <div
+                        key={room._id}
+                        className="flex flex-col md:flex-row items-start py-10 gap-6
+            border-b border-gray-300 last:border-0"
+                    >
+                        <img
+                            onClick={() => {
+                                navigate(`/rooms/${room._id}`)
+                                window.scrollTo(0, 0)
+                            }}
+                            src={room.images[0]}
+                            alt="hotel"
+                            title="View room details"
+                            className="max-h-64 md:w-1/2 rounded-xl shadow-lg
+              object-cover cursor-pointer"
+                        />
+
+                        <div className="md:w-1/2 flex flex-col gap-2">
+                            <p className="text-gray-500">{room.hotel.city}</p>
+
+                            <p
+                                onClick={() => {
+                                    navigate(`/rooms/${room._id}`)
+                                    window.scrollTo(0, 0)
+                                }}
+                                className="text-gray-800 text-3xl font-playfair cursor-pointer"
+                            >
+                                {room.hotel.name}
+                            </p>
+
+                            <div className="flex items-center">
+                                <StarRating />
+                                <p className="ml-2 text-sm">200+ reviews</p>
+                            </div>
+
+                            <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
+                                <img
+                                    src={assets.locationIcon}
+                                    alt="location"
+                                    className="w-4 h-4"
+                                />
+                                <span>{room.hotel.address}</span>
+                            </div>
+
+                            {/* Amenities */}
+                            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+                                {room.amenities.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-2 px-3 py-2
+                    rounded-lg bg-[#F5F5FF]/70"
+                                    >
+                                        <img
+                                            src={facilityIcons[item]}
+                                            alt={item}
+                                            className="w-5 h-5"
+                                        />
+                                        <p className="text-xs">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <p className="text-xl font-medium text-gray-700">
+                                ₹{room.pricePerNight}
+                            </p>
+                        </div>
+
+                    </div>
+                ))}
+
+                {/* ---------------------------PG-3---------------------- */}
+                {pgrooms3DummyData.map((room) => (
+                    <div
+                        key={room._id}
+                        className="flex flex-col md:flex-row items-start py-10 gap-6
+            border-b border-gray-300 last:border-0"
+                    >
+                        <img
+                            onClick={() => {
+                                navigate(`/rooms/${room._id}`)
+                                window.scrollTo(0, 0)
+                            }}
+                            src={room.images[0]}
+                            alt="hotel"
+                            title="View room details"
+                            className="max-h-64 md:w-1/2 rounded-xl shadow-lg
+              object-cover cursor-pointer"
+                        />
+
+                        <div className="md:w-1/2 flex flex-col gap-2">
+                            <p className="text-gray-500">{room.hotel.city}</p>
+
+                            <p
+                                onClick={() => {
+                                    navigate(`/rooms/${room._id}`)
+                                    window.scrollTo(0, 0)
+                                }}
+                                className="text-gray-800 text-3xl font-playfair cursor-pointer"
+                            >
+                                {room.hotel.name}
+                            </p>
+
+                            <div className="flex items-center">
+                                <StarRating />
+                                <p className="ml-2 text-sm">200+ reviews</p>
+                            </div>
+
+                            <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
+                                <img
+                                    src={assets.locationIcon}
+                                    alt="location"
+                                    className="w-4 h-4"
+                                />
+                                <span>{room.hotel.address}</span>
+                            </div>
+
+                            {/* Amenities */}
+                            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+                                {room.amenities.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-2 px-3 py-2
+                    rounded-lg bg-[#F5F5FF]/70"
+                                    >
+                                        <img
+                                            src={facilityIcons[item]}
+                                            alt={item}
+                                            className="w-5 h-5"
+                                        />
+                                        <p className="text-xs">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <p className="text-xl font-medium text-gray-700">
+                                ₹{room.pricePerNight}
+                            </p>
+                        </div>
+
+                    </div>
+                ))}
+
+                {/* ---------------------------PG-4---------------------- */}
+                {pgrooms4DummyData.map((room) => (
+                    <div
+                        key={room._id}
+                        className="flex flex-col md:flex-row items-start py-10 gap-6
+            border-b border-gray-300 last:border-0"
+                    >
+                        <img
+                            onClick={() => {
+                                navigate(`/rooms/${room._id}`)
+                                window.scrollTo(0, 0)
+                            }}
+                            src={room.images[0]}
+                            alt="hotel"
+                            title="View room details"
+                            className="max-h-64 md:w-1/2 rounded-xl shadow-lg
+              object-cover cursor-pointer"
+                        />
+
+                        <div className="md:w-1/2 flex flex-col gap-2">
+                            <p className="text-gray-500">{room.hotel.city}</p>
+
+                            <p
+                                onClick={() => {
+                                    navigate(`/rooms/${room._id}`)
+                                    window.scrollTo(0, 0)
+                                }}
+                                className="text-gray-800 text-3xl font-playfair cursor-pointer"
+                            >
+                                {room.hotel.name}
+                            </p>
+
+                            <div className="flex items-center">
+                                <StarRating />
+                                <p className="ml-2 text-sm">200+ reviews</p>
+                            </div>
+
+                            <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
+                                <img
+                                    src={assets.locationIcon}
+                                    alt="location"
+                                    className="w-4 h-4"
+                                />
+                                <span>{room.hotel.address}</span>
+                            </div>
+
+                            {/* Amenities */}
+                            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+                                {room.amenities.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-2 px-3 py-2
+                    rounded-lg bg-[#F5F5FF]/70"
+                                    >
+                                        <img
+                                            src={facilityIcons[item]}
+                                            alt={item}
+                                            className="w-5 h-5"
+                                        />
+                                        <p className="text-xs">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <p className="text-xl font-medium text-gray-700">
+                                ₹{room.pricePerNight}
+                            </p>
+                        </div>
+
+                    </div>
+                ))}
+
+                {/* ---------------------------PG-5---------------------- */}
+                {pgrooms5DummyData.map((room) => (
+                    <div
+                        key={room._id}
+                        className="flex flex-col md:flex-row items-start py-10 gap-6
+            border-b border-gray-300 last:border-0"
+                    >
+                        <img
+                            onClick={() => {
+                                navigate(`/rooms/${room._id}`)
+                                window.scrollTo(0, 0)
+                            }}
+                            src={room.images[0]}
+                            alt="hotel"
+                            title="View room details"
+                            className="max-h-64 md:w-1/2 rounded-xl shadow-lg
+              object-cover cursor-pointer"
+                        />
+
+                        <div className="md:w-1/2 flex flex-col gap-2">
+                            <p className="text-gray-500">{room.hotel.city}</p>
+
+                            <p
+                                onClick={() => {
+                                    navigate(`/rooms/${room._id}`)
+                                    window.scrollTo(0, 0)
+                                }}
+                                className="text-gray-800 text-3xl font-playfair cursor-pointer"
+                            >
+                                {room.hotel.name}
+                            </p>
+
+                            <div className="flex items-center">
+                                <StarRating />
+                                <p className="ml-2 text-sm">200+ reviews</p>
+                            </div>
+
+                            <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
+                                <img
+                                    src={assets.locationIcon}
+                                    alt="location"
+                                    className="w-4 h-4"
+                                />
+                                <span>{room.hotel.address}</span>
+                            </div>
+
+                            {/* Amenities */}
+                            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+                                {room.amenities.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-2 px-3 py-2
+                    rounded-lg bg-[#F5F5FF]/70"
+                                    >
+                                        <img
+                                            src={facilityIcons[item]}
+                                            alt={item}
+                                            className="w-5 h-5"
+                                        />
+                                        <p className="text-xs">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <p className="text-xl font-medium text-gray-700">
+                                ₹{room.pricePerNight}
+                            </p>
+                        </div>
+
+                    </div>
+                ))}
+
+                {/* ---------------------------PG-6---------------------- */}
+                {pgrooms6DummyData.map((room) => (
+                    <div
+                        key={room._id}
+                        className="flex flex-col md:flex-row items-start py-10 gap-6
+            border-b border-gray-300 last:border-0"
+                    >
+                        <img
+                            onClick={() => {
+                                navigate(`/rooms/${room._id}`)
+                                window.scrollTo(0, 0)
+                            }}
+                            src={room.images[0]}
+                            alt="hotel"
+                            title="View room details"
+                            className="max-h-64 md:w-1/2 rounded-xl shadow-lg
+              object-cover cursor-pointer"
+                        />
+
+                        <div className="md:w-1/2 flex flex-col gap-2">
+                            <p className="text-gray-500">{room.hotel.city}</p>
+
+                            <p
+                                onClick={() => {
+                                    navigate(`/rooms/${room._id}`)
+                                    window.scrollTo(0, 0)
+                                }}
+                                className="text-gray-800 text-3xl font-playfair cursor-pointer"
+                            >
+                                {room.hotel.name}
+                            </p>
+
+                            <div className="flex items-center">
+                                <StarRating />
+                                <p className="ml-2 text-sm">200+ reviews</p>
+                            </div>
+
+                            <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
+                                <img
+                                    src={assets.locationIcon}
+                                    alt="location"
+                                    className="w-4 h-4"
+                                />
+                                <span>{room.hotel.address}</span>
+                            </div>
+
+                            {/* Amenities */}
+                            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+                                {room.amenities.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-2 px-3 py-2
+                    rounded-lg bg-[#F5F5FF]/70"
+                                    >
+                                        <img
+                                            src={facilityIcons[item]}
+                                            alt={item}
+                                            className="w-5 h-5"
+                                        />
+                                        <p className="text-xs">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <p className="text-xl font-medium text-gray-700">
+                                ₹{room.pricePerNight}
+                            </p>
+                        </div>
+
+                    </div>
+                ))}
+
+                {/* ---------------------------PG-7---------------------- */}
+                {pgrooms7DummyData.map((room) => (
+                    <div
+                        key={room._id}
+                        className="flex flex-col md:flex-row items-start py-10 gap-6
+            border-b border-gray-300 last:border-0"
+                    >
+                        <img
+                            onClick={() => {
+                                navigate(`/rooms/${room._id}`)
+                                window.scrollTo(0, 0)
+                            }}
+                            src={room.images[0]}
+                            alt="hotel"
+                            title="View room details"
+                            className="max-h-64 md:w-1/2 rounded-xl shadow-lg
+              object-cover cursor-pointer"
+                        />
+
+                        <div className="md:w-1/2 flex flex-col gap-2">
+                            <p className="text-gray-500">{room.hotel.city}</p>
+
+                            <p
+                                onClick={() => {
+                                    navigate(`/rooms/${room._id}`)
+                                    window.scrollTo(0, 0)
+                                }}
+                                className="text-gray-800 text-3xl font-playfair cursor-pointer"
+                            >
+                                {room.hotel.name}
+                            </p>
+
+                            <div className="flex items-center">
+                                <StarRating />
+                                <p className="ml-2 text-sm">200+ reviews</p>
+                            </div>
+
+                            <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
+                                <img
+                                    src={assets.locationIcon}
+                                    alt="location"
+                                    className="w-4 h-4"
+                                />
+                                <span>{room.hotel.address}</span>
+                            </div>
+
+                            {/* Amenities */}
+                            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+                                {room.amenities.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-2 px-3 py-2
+                    rounded-lg bg-[#F5F5FF]/70"
+                                    >
+                                        <img
+                                            src={facilityIcons[item]}
+                                            alt={item}
+                                            className="w-5 h-5"
+                                        />
+                                        <p className="text-xs">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <p className="text-xl font-medium text-gray-700">
+                                ₹{room.pricePerNight}
+                            </p>
+                        </div>
+
+                    </div>
+                ))}
+
+                {/* ---------------------------PG-8---------------------- */}
+                {pgrooms8DummyData.map((room) => (
+                    <div
+                        key={room._id}
+                        className="flex flex-col md:flex-row items-start py-10 gap-6
+            border-b border-gray-300 last:border-0"
+                    >
+                        <img
+                            onClick={() => {
+                                navigate(`/rooms/${room._id}`)
+                                window.scrollTo(0, 0)
+                            }}
+                            src={room.images[0]}
+                            alt="hotel"
+                            title="View room details"
+                            className="max-h-64 md:w-1/2 rounded-xl shadow-lg
+              object-cover cursor-pointer"
+                        />
+
+                        <div className="md:w-1/2 flex flex-col gap-2">
+                            <p className="text-gray-500">{room.hotel.city}</p>
+
+                            <p
+                                onClick={() => {
+                                    navigate(`/rooms/${room._id}`)
+                                    window.scrollTo(0, 0)
+                                }}
+                                className="text-gray-800 text-3xl font-playfair cursor-pointer"
+                            >
+                                {room.hotel.name}
+                            </p>
+
+                            <div className="flex items-center">
+                                <StarRating />
+                                <p className="ml-2 text-sm">200+ reviews</p>
+                            </div>
+
+                            <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
+                                <img
+                                    src={assets.locationIcon}
+                                    alt="location"
+                                    className="w-4 h-4"
+                                />
+                                <span>{room.hotel.address}</span>
+                            </div>
+
+                            {/* Amenities */}
+                            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+                                {room.amenities.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-2 px-3 py-2
+                    rounded-lg bg-[#F5F5FF]/70"
+                                    >
+                                        <img
+                                            src={facilityIcons[item]}
+                                            alt={item}
+                                            className="w-5 h-5"
+                                        />
+                                        <p className="text-xs">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <p className="text-xl font-medium text-gray-700">
+                                ₹{room.pricePerNight}
+                            </p>
+                        </div>
+
+                    </div>
+                ))}
+
+                {/* ---------------------------PG-9---------------------- */}
+                {pgrooms9DummyData.map((room) => (
+                    <div
+                        key={room._id}
+                        className="flex flex-col md:flex-row items-start py-10 gap-6
+            border-b border-gray-300 last:border-0"
+                    >
+                        <img
+                            onClick={() => {
+                                navigate(`/rooms/${room._id}`)
+                                window.scrollTo(0, 0)
+                            }}
+                            src={room.images[0]}
+                            alt="hotel"
+                            title="View room details"
+                            className="max-h-64 md:w-1/2 rounded-xl shadow-lg
+              object-cover cursor-pointer"
+                        />
+
+                        <div className="md:w-1/2 flex flex-col gap-2">
+                            <p className="text-gray-500">{room.hotel.city}</p>
+
+                            <p
+                                onClick={() => {
+                                    navigate(`/rooms/${room._id}`)
+                                    window.scrollTo(0, 0)
+                                }}
+                                className="text-gray-800 text-3xl font-playfair cursor-pointer"
+                            >
+                                {room.hotel.name}
+                            </p>
+
+                            <div className="flex items-center">
+                                <StarRating />
+                                <p className="ml-2 text-sm">200+ reviews</p>
+                            </div>
+
+                            <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
+                                <img
+                                    src={assets.locationIcon}
+                                    alt="location"
+                                    className="w-4 h-4"
+                                />
+                                <span>{room.hotel.address}</span>
+                            </div>
+
+                            {/* Amenities */}
+                            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+                                {room.amenities.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-2 px-3 py-2
+                    rounded-lg bg-[#F5F5FF]/70"
+                                    >
+                                        <img
+                                            src={facilityIcons[item]}
+                                            alt={item}
+                                            className="w-5 h-5"
+                                        />
+                                        <p className="text-xs">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <p className="text-xl font-medium text-gray-700">
+                                ₹{room.pricePerNight}
+                            </p>
+                        </div>
+
+                    </div>
+                ))}
+                {/* -------------------------------------------- */}
             </div>
 
             {/* ---------- Filters Section ---------- */}
@@ -198,7 +790,7 @@ const AllRooms = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

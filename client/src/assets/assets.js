@@ -156,11 +156,11 @@ export const userDummyData = {
         "BTM Layout"
     ]
 }
-
+// ------------------pg1----------------------------
 // Hotel Dummy Data
 export const hotelDummyData = {
-    "_id": "67f76393197ac559e4089b72",
-    "name": "The princess luxury PG for ladies",
+    "_id": "pg1",
+    "name": "The princess luxury ladies PG",
     "address": "BTM layout 2nd stage,5th main Rd NS palya",
     "contact": "+918553406098",
     "owner": userDummyData,
@@ -173,7 +173,7 @@ export const hotelDummyData = {
 // Rooms Dummy Data
 export const roomsDummyData = [
     {
-        "_id": "67f7647c197ac559e4089b96",
+        "_id": "pg1_details",
         "hotel": hotelDummyData,
         "roomType": "Single Bed",
         "pricePerNight": 7999,
@@ -183,44 +183,284 @@ export const roomsDummyData = [
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
         "__v": 0
-    },
+    }
+]
+
+// ------------------pg2----------------------------
+// Hotel Dummy Data
+export const hotel2DummyData = {
+    "_id": "pg2",
+    "name": "Venkata Raghavendra Ladies PG",
+    "address": "7th Main Road, Near Manasa Nursing Home, Muniyappa Layout, Garvebhavipalya, Bangalore",
+    "contact": "+918553406098",
+    "owner": userDummyData,
+    "city": "Garvebhavipalya",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const pgrooms2DummyData = [
     {
-        "_id": "67f76452197ac559e4089b8e",
-        "hotel": hotelDummyData,
-        "roomType": "Double Bed",
-        "pricePerNight": 18999,
-        "amenities": ["Room Service", "Mountain View", "Pool Access"],
-        "images": [roomImg2],
-        "isAvailable": true,
-        "createdAt": "2025-04-10T06:25:22.593Z",
-        "updatedAt": "2025-04-10T06:25:22.593Z",
-        "__v": 0
-    },
-    {
-        "_id": "67f76406197ac559e4089b82",
-        "hotel": hotelDummyData,
-        "roomType": "Double Bed",
-        "pricePerNight": 15999,
-        "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
-        "images": [roomImg3],
-        "isAvailable": true,
-        "createdAt": "2025-04-10T06:24:06.285Z",
-        "updatedAt": "2025-04-10T06:24:06.285Z",
-        "__v": 0
-    },
-    {
-        "_id": "67f763d8197ac559e4089b7a",
-        "hotel": hotelDummyData,
+        "_id": "pg2_details",
+        "hotel": hotel2DummyData,
         "roomType": "Single Bed",
-        "pricePerNight": 8999,
-        "amenities": ["Free WiFi", "Room Service", "Pool Access"],
-        "images": [roomImg4],
+        "pricePerNight": 5999,
+        "amenities": ["Room Service", "Food", "Wi-fi"],
+        "images": [roomImg1],
         "isAvailable": true,
-        "createdAt": "2025-04-10T06:23:20.252Z",
-        "updatedAt": "2025-04-10T06:23:20.252Z",
+        "createdAt": "2025-04-10T06:26:04.013Z",
+        "updatedAt": "2025-04-10T06:26:04.013Z",
         "__v": 0
     }
 ]
+// ------------------pg3----------------------------
+// Hotel Dummy Data
+export const hotel3DummyData = {
+    "_id": "pg3",
+    "name": "Gmb Comforts Luxury Ladies PG",
+    "address": "VP Road, BTM Layout 1st Stage, Bangalore",
+    "contact": "+918553406098",
+    "owner": userDummyData,
+    "city": "BTM Layout",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const pgrooms3DummyData = [
+    {
+        "_id": "pg3_details",
+        "hotel": hotel3DummyData,
+        "roomType": "Single Bed",
+        "pricePerNight": 9999,
+        "amenities": ["Room Service", "Food", "Wi-fi"],
+        "images": [roomImg1],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:26:04.013Z",
+        "updatedAt": "2025-04-10T06:26:04.013Z",
+        "__v": 0
+    }
+]
+
+// ------------------pg4----------------------------
+// Hotel Dummy Data
+export const hotel4DummyData = {
+    "_id": "pg4",
+    "name": "Shiridi Sai Gents PG",
+    "address": "11th A Main, 13th Cross,Near Ragavandra Temple, Jayanagar 5th Block, Bangalore",
+    "contact": "+918553406098",
+    "owner": userDummyData,
+    "city": "Jayanagar ",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const pgrooms4DummyData = [
+    {
+        "_id": "pg4_details",
+        "hotel": hotel4DummyData,
+        "roomType": "Single Bed",
+        "pricePerNight": 11999,
+        "amenities": ["Room Service", "Food", "Wi-fi"],
+        "images": [roomImg1],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:26:04.013Z",
+        "updatedAt": "2025-04-10T06:26:04.013Z",
+        "__v": 0
+    }
+]
+
+// ------------------pg5----------------------------
+// Hotel Dummy Data
+export const hotel5DummyData = {
+    "_id": "pg5",
+    "name": "SLV Gents PG ",
+    "address": "7th Main Rd, NS Palya, BTM Layout 2nd stage,Bangalore",
+    "contact": "+918553406098",
+    "owner": userDummyData,
+    "city": "BTM Layout",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const pgrooms5DummyData = [
+    {
+        "_id": "pg5_details",
+        "hotel": hotel5DummyData,
+        "roomType": "Single Bed",
+        "pricePerNight": 14999,
+        "amenities": ["Room Service", "Food", "Wi-fi"],
+        "images": [roomImg1],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:26:04.013Z",
+        "updatedAt": "2025-04-10T06:26:04.013Z",
+        "__v": 0
+    }
+]
+
+// ------------------pg6----------------------------
+// Hotel Dummy Data
+export const hotel6DummyData = {
+    "_id": "pg6",
+    "name": "Srinivasa Deluxe PG for Gents",
+    "address": "2nd Crose,4th Main Rd, Behind Human Temple,Madiwala,Bangalore",
+    "contact": "+918553406098",
+    "owner": userDummyData,
+    "city": "Madiwala",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const pgrooms6DummyData = [
+    {
+        "_id": "pg6_details",
+        "hotel": hotel6DummyData,
+        "roomType": "Single Bed",
+        "pricePerNight": 13999,
+        "amenities": ["Room Service", "Food", "Wi-fi"],
+        "images": [roomImg1],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:26:04.013Z",
+        "updatedAt": "2025-04-10T06:26:04.013Z",
+        "__v": 0
+    }
+]
+
+// ------------------pg7----------------------------
+// Hotel Dummy Data
+export const hotel7DummyData = {
+    "_id": "pg7",
+    "name": "TAA Premium Coliving PG ",
+    "address": "ITPL Backgate, Whitefield, Bengaluru",
+    "contact": "+918553406098",
+    "owner": userDummyData,
+    "city": " Whitefield",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const pgrooms7DummyData = [
+    {
+        "_id": "pg7_details",
+        "hotel": hotel7DummyData,
+        "roomType": "Single Bed",
+        "pricePerNight": 17999,
+        "amenities": ["Room Service", "Food", "Wi-fi"],
+        "images": [roomImg1],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:26:04.013Z",
+        "updatedAt": "2025-04-10T06:26:04.013Z",
+        "__v": 0
+    }
+]
+
+// ------------------pg8----------------------------
+// Hotel Dummy Data
+export const hotel8DummyData = {
+    "_id": "pg8",
+    "name": "JP Premium Co-Living PG ",
+    "address": "Garudachar Palya, Mahadevapura",
+    "contact": "+918553406098",
+    "owner": userDummyData,
+    "city": "Mahadevapura ",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const pgrooms8DummyData = [
+    {
+        "_id": "pg8_details",
+        "hotel": hotel8DummyData,
+        "roomType": "Single Bed",
+        "pricePerNight": 17999,
+        "amenities": ["Room Service", "Food", "Wi-fi"],
+        "images": [roomImg1],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:26:04.013Z",
+        "updatedAt": "2025-04-10T06:26:04.013Z",
+        "__v": 0
+    }
+]
+
+// ------------------pg9----------------------------
+// Hotel Dummy Data
+export const hotel9DummyData = {
+    "_id": "pg9",
+    "name": "7Hills Luxury PG For Co-Living ",
+    "address": "BTM Layout 1st Stage ",
+    "contact": "+918553406098",
+    "owner": userDummyData,
+    "city": "BTM Layout",
+    "createdAt": "2025-04-10T06:22:11.663Z",
+    "updatedAt": "2025-04-10T06:22:11.663Z",
+    "__v": 0
+}
+
+// Rooms Dummy Data
+export const pgrooms9DummyData = [
+    {
+        "_id": "pg9_details",
+        "hotel": hotel9DummyData,
+        "roomType": "Single Bed",
+        "pricePerNight": 15999,
+        "amenities": ["Room Service", "Food", "Wi-fi"],
+        "images": [roomImg1],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:26:04.013Z",
+        "updatedAt": "2025-04-10T06:26:04.013Z",
+        "__v": 0
+    }
+]
+// {
+//     "_id": "67f76452197ac559e4089b8e",
+//     "hotel": hotelDummyData,
+//     "roomType": "Double Bed",
+//     "pricePerNight": 18999,
+//     "amenities": ["Room Service", "Mountain View", "Pool Access"],
+//     "images": [roomImg2],
+//     "isAvailable": true,
+//     "createdAt": "2025-04-10T06:25:22.593Z",
+//     "updatedAt": "2025-04-10T06:25:22.593Z",
+//     "__v": 0
+// },
+// {
+//     "_id": "67f76406197ac559e4089b82",
+//     "hotel": hotelDummyData,
+//     "roomType": "Double Bed",
+//     "pricePerNight": 15999,
+//     "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
+//     "images": [roomImg3],
+//     "isAvailable": true,
+//     "createdAt": "2025-04-10T06:24:06.285Z",
+//     "updatedAt": "2025-04-10T06:24:06.285Z",
+//     "__v": 0
+// },
+// {
+//     "_id": "67f763d8197ac559e4089b7a",
+//     "hotel": hotelDummyData,
+//     "roomType": "Single Bed",
+//     "pricePerNight": 8999,
+//     "amenities": ["Free WiFi", "Room Service", "Pool Access"],
+//     "images": [roomImg4],
+//     "isAvailable": true,
+//     "createdAt": "2025-04-10T06:23:20.252Z",
+//     "updatedAt": "2025-04-10T06:23:20.252Z",
+//     "__v": 0
+// }
+// ]
 // --------------------------------PG-end------------------------------------------------------
 // --------------------------------hostel-------------------------------------------------------
 
@@ -243,12 +483,12 @@ export const userhostelDummyData = {
 // ------------------hostel 1-------------
 // Hotel Dummy Data
 export const hostelDummyData = {
-    "_id": "67f76393197ac559e4089b72",
+    "_id": "hostel1",
     "name": "Zolo Hamilton hostel",
     "address": "15th Cross Road, Green Garden Layout, Silver Springs Layout, Munnekollal, Bengaluru ",
     "contact": "+918884518010",
     "owner": userhostelDummyData,
-    "city": "BTM Layout",
+    "city": "Marathahalli",
     "createdAt": "2025-04-10T06:22:11.663Z",
     "updatedAt": "2025-04-10T06:22:11.663Z",
     "__v": 0
@@ -257,7 +497,7 @@ export const hostelDummyData = {
 // Rooms Dummy Data
 export const hostelroomsDummyData = [
     {
-        "_id": "67f7647c197ac559e4089b96",
+        "_id": "hostel1_details",
         "hotel": hostelDummyData,
         "roomType": "Single Bed",
         "pricePerNight": 12999,
@@ -272,7 +512,7 @@ export const hostelroomsDummyData = [
 // ------------------hostel 2-------------------
 // Hotel Dummy Data
 export const hostel2DummyData = {
-    "_id": "67f76393197ac559e4089b72",
+    "_id": "hostel2",
     "name": "The Little Blue Window Hostel ",
     "address": "13th Main Road, Sunshine Colony, Stage 2, 2nd Stage, BTM Layout 2nd Stage, BTM Layout, Bengaluru",
     "contact": "+918553406098",
@@ -286,7 +526,7 @@ export const hostel2DummyData = {
 // Rooms Dummy Data
 export const hostel2roomsDummyData = [
     {
-        "_id": "67f76406197ac559e4089b82",
+        "_id": "hostel2_details",
         "hotel": hostel2DummyData,
         "roomType": "Double Bed",
         "pricePerNight": 9999,
@@ -301,12 +541,12 @@ export const hostel2roomsDummyData = [
 // -----------------hostel 3----------
 // Hotel Dummy Data
 export const hostel3DummyData = {
-    "_id": "67f76393197ac559e4089b72",
+    "_id": "hostel3",
     "name": " Oxygen hostel for Gents ",
     "address": "78/79, 5th Cross, Ramanjaneya Layout, Opposite Kalamandir, Marathahalli Bridge, Bengaluru",
     "contact": "+918553406098",
     "owner": userhostelDummyData,
-    "city": "BTM Layout",
+    "city": "Marathahalli",
     "createdAt": "2025-04-10T06:22:11.663Z",
     "updatedAt": "2025-04-10T06:22:11.663Z",
     "__v": 0
@@ -315,7 +555,7 @@ export const hostel3DummyData = {
 // Rooms Dummy Data
 export const hostel3roomsDummyData = [
     {
-        "_id": "67f76406197ac559e4089b82",
+        "_id": "hostel3_details",
         "hotel": hostel3DummyData,
         "roomType": "Double Bed",
         "pricePerNight": 6999,
@@ -331,12 +571,12 @@ export const hostel3roomsDummyData = [
 // -----------------hostel 4----------
 // Hotel Dummy Data
 export const hostel4DummyData = {
-    "_id": "67f76393197ac559e4089b72",
+    "_id": "hostel4",
     "name": " The Hosteller Bangalore ",
     "address": "124, Brigade Rd, opposite Brigade Tower, near Vellara Junction, Ashok Nagar, Bengaluru",
     "contact": "+918553406098",
     "owner": userhostelDummyData,
-    "city": "BTM Layout",
+    "city": "Ashok Nagar",
     "createdAt": "2025-04-10T06:22:11.663Z",
     "updatedAt": "2025-04-10T06:22:11.663Z",
     "__v": 0
@@ -345,7 +585,7 @@ export const hostel4DummyData = {
 // Rooms Dummy Data
 export const hostel4roomsDummyData = [
     {
-        "_id": "67f76406197ac559e4089b82",
+        "_id": "hostel4_details",
         "hotel": hostel4DummyData,
         "roomType": "Double Bed",
         "pricePerNight": 16999,
@@ -360,12 +600,12 @@ export const hostel4roomsDummyData = [
 // -----------------hostel 5----------
 // Hotel Dummy Data
 export const hostel5DummyData = {
-    "_id": "67f76393197ac559e4089b72",
+    "_id": "hostel5",
     "name": " Zostel Bangalore  ",
     "address": "17th Main, 1st Cross Rd, HAL 2nd Stage, Indiranagar, Bengaluru",
     "contact": "+918553406098",
     "owner": userhostelDummyData,
-    "city": "BTM Layout",
+    "city": "Indiranagar",
     "createdAt": "2025-04-10T06:22:11.663Z",
     "updatedAt": "2025-04-10T06:22:11.663Z",
     "__v": 0
@@ -374,7 +614,7 @@ export const hostel5DummyData = {
 // Rooms Dummy Data
 export const hostel5roomsDummyData = [
     {
-        "_id": "67f76406197ac559e4089b82",
+        "_id": "hostel5_details",
         "hotel": hostel5DummyData,
         "roomType": "Double Bed",
         "pricePerNight": 11999,
@@ -394,7 +634,7 @@ export const userBookingsDummyData = [
     {
         "_id": "67f76839994a731e97d3b8ce",
         "user": userDummyData,
-        "room": roomsDummyData[1],
+        "room": roomsDummyData[0],
         "hotel": hotelDummyData,
         "checkInDate": "2025-04-30T00:00:00.000Z",
         "checkOutDate": "2025-05-01T00:00:00.000Z",
