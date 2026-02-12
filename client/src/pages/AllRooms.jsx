@@ -38,22 +38,29 @@ const RadioButton = ({ label, selected = false, onChange = () => { } }) => {
 }
 
 /* ---------- Main Component ---------- */
+
+
+
 const AllRooms = () => {
     const navigate = useNavigate()
     const [openFilters, setOpenFilters] = useState(false)
 
+
+    const [selectedRoomTypes, setSelectedRoomTypes] = useState([])
+    const [selectedPrices, setSelectedPrices] = useState([])
+    const [selectedSort, setSelectedSort] = useState('')
+
     const roomTypes = [
-        'Single Bed',
-        'Double Bed',
-        'Luxury Room',
-        'Family Suite',
+        'Men’s PG',
+        'Ladies’ PG',
+        'Co-Living PG',
     ]
 
     const priceRanges = [
-        '0 to 500',
-        '500 to 1000',
-        '1000 to 2000',
-        '2000 to 3000',
+        '0 to 5000',
+        '5000 to 10000',
+        '15000 to 20000',
+        '25000 to 30000',
     ]
 
     const sortOptions = [
@@ -61,6 +68,35 @@ const AllRooms = () => {
         'Price High to Low',
         'Newest First',
     ]
+
+    const clearFilters = () => {
+        setSelectedRoomTypes([])
+        setSelectedPrices([])
+        setSelectedSort('')
+    }
+
+    const applyFilters = (room) => {
+
+        // Filter by Room Type
+        if (selectedRoomTypes.length > 0 &&
+            !selectedRoomTypes.includes(room.roomType)) {
+            return false
+        }
+
+        // Filter by Price
+        if (selectedPrices.length > 0) {
+            const matchPrice = selectedPrices.some(range => {
+                const [min, max] = range.split(' to ').map(Number)
+                return room.pricePerNight >= min && room.pricePerNight <= max
+            })
+
+            if (!matchPrice) return false
+        }
+
+        return true
+    }
+
+
 
     return (
         <div
@@ -89,150 +125,152 @@ const AllRooms = () => {
                     </div>
                 </div>
                 {/* ---------------------------PG-1---------------------- */}
-                {roomsDummyData.map((room) => (
-                    <div
-                        key={room._id}
-                        className="flex flex-col md:flex-row items-start py-10 gap-6
+                {roomsDummyData
+                    .slice().sort((a, b) => { if (selectedSort === "Price Low to High") { return a.pricePerNight - b.pricePerNight } if (selectedSort === "Price High to Low") { return b.pricePerNight - a.pricePerNight } if (selectedSort === "Newest First") { return new Date(b.createdAt) - new Date(a.createdAt) } return 0 }).filter(applyFilters).map((room) => (
+                        <div
+                            key={room._id}
+                            className="flex flex-col md:flex-row items-start py-10 gap-6
             border-b border-gray-300 last:border-0"
-                    >
-                        <img
-                            onClick={() => {
-                                navigate(`/rooms/${room._id}`)
-                                window.scrollTo(0, 0)
-                            }}
-                            src={room.images[0]}
-                            alt="hotel"
-                            title="View room details"
-                            className="max-h-64 md:w-1/2 rounded-xl shadow-lg
-              object-cover cursor-pointer"
-                        />
-
-                        <div className="md:w-1/2 flex flex-col gap-2">
-                            <p className="text-gray-500">{room.hotel.city}</p>
-
-                            <p
+                        >
+                            <img
                                 onClick={() => {
                                     navigate(`/rooms/${room._id}`)
                                     window.scrollTo(0, 0)
                                 }}
-                                className="text-gray-800 text-3xl font-playfair cursor-pointer"
-                            >
-                                {room.hotel.name}
-                            </p>
+                                src={room.images[0]}
+                                alt="hotel"
+                                title="View room details"
+                                className="max-h-64 md:w-1/2 rounded-xl shadow-lg
+              object-cover cursor-pointer"
+                            />
 
-                            <div className="flex items-center">
-                                <StarRating />
-                                <p className="ml-2 text-sm">200+ reviews</p>
-                            </div>
+                            <div className="md:w-1/2 flex flex-col gap-2">
+                                <p className="text-gray-500">{room.hotel.city}</p>
 
-                            <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
-                                <img
-                                    src={assets.locationIcon}
-                                    alt="location"
-                                    className="w-4 h-4"
-                                />
-                                <span>{room.hotel.address}</span>
-                            </div>
+                                <p
+                                    onClick={() => {
+                                        navigate(`/rooms/${room._id}`)
+                                        window.scrollTo(0, 0)
+                                    }}
+                                    className="text-gray-800 text-3xl font-playfair cursor-pointer"
+                                >
+                                    {room.hotel.name}
+                                </p>
 
-                            {/* Amenities */}
-                            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
-                                {room.amenities.map((item, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-center gap-2 px-3 py-2
+                                <div className="flex items-center">
+                                    <StarRating />
+                                    <p className="ml-2 text-sm">200+ reviews</p>
+                                </div>
+
+                                <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
+                                    <img
+                                        src={assets.locationIcon}
+                                        alt="location"
+                                        className="w-4 h-4"
+                                    />
+                                    <span>{room.hotel.address}</span>
+                                </div>
+
+                                {/* Amenities */}
+                                <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+                                    {room.amenities.map((item, index) => (
+                                        <div
+                                            key={index}
+                                            className="flex items-center gap-2 px-3 py-2
                     rounded-lg bg-[#F5F5FF]/70"
-                                    >
-                                        <img
-                                            src={facilityIcons[item]}
-                                            alt={item}
-                                            className="w-5 h-5"
-                                        />
-                                        <p className="text-xs">{item}</p>
-                                    </div>
-                                ))}
+                                        >
+                                            <img
+                                                src={facilityIcons[item]}
+                                                alt={item}
+                                                className="w-5 h-5"
+                                            />
+                                            <p className="text-xs">{item}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <p className="text-xl font-medium text-gray-700">
+                                    ₹{room.pricePerNight}
+                                </p>
                             </div>
 
-                            <p className="text-xl font-medium text-gray-700">
-                                ₹{room.pricePerNight}
-                            </p>
                         </div>
-
-                    </div>
-                ))}
+                    ))}
                 {/* ---------------------------PG-2---------------------- */}
-                {pgrooms2DummyData.map((room) => (
-                    <div
-                        key={room._id}
-                        className="flex flex-col md:flex-row items-start py-10 gap-6
-            border-b border-gray-300 last:border-0"
-                    >
-                        <img
-                            onClick={() => {
-                                navigate(`/rooms/${room._id}`)
-                                window.scrollTo(0, 0)
-                            }}
-                            src={room.images[0]}
-                            alt="hotel"
-                            title="View room details"
-                            className="max-h-64 md:w-1/2 rounded-xl shadow-lg
-              object-cover cursor-pointer"
-                        />
-
-                        <div className="md:w-1/2 flex flex-col gap-2">
-                            <p className="text-gray-500">{room.hotel.city}</p>
-
-                            <p
+                {pgrooms2DummyData
+                    .slice().sort((a, b) => { if (selectedSort === "Price Low to High") { return a.pricePerNight - b.pricePerNight } if (selectedSort === "Price High to Low") { return b.pricePerNight - a.pricePerNight } if (selectedSort === "Newest First") { return new Date(b.createdAt) - new Date(a.createdAt) } return 0 }).filter(applyFilters).map((room) => (
+                        < div
+                            key={room._id}
+                            className="flex flex-col md:flex-row items-start py-10 gap-6
+                border-b border-gray-300 last:border-0"
+                        >
+                            <img
                                 onClick={() => {
                                     navigate(`/rooms/${room._id}`)
                                     window.scrollTo(0, 0)
                                 }}
-                                className="text-gray-800 text-3xl font-playfair cursor-pointer"
-                            >
-                                {room.hotel.name}
-                            </p>
+                                src={room.images[0]}
+                                alt="hotel"
+                                title="View room details"
+                                className="max-h-64 md:w-1/2 rounded-xl shadow-lg
+              object-cover cursor-pointer"
+                            />
 
-                            <div className="flex items-center">
-                                <StarRating />
-                                <p className="ml-2 text-sm">200+ reviews</p>
-                            </div>
+                            <div className="md:w-1/2 flex flex-col gap-2">
+                                <p className="text-gray-500">{room.hotel.city}</p>
 
-                            <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
-                                <img
-                                    src={assets.locationIcon}
-                                    alt="location"
-                                    className="w-4 h-4"
-                                />
-                                <span>{room.hotel.address}</span>
-                            </div>
+                                <p
+                                    onClick={() => {
+                                        navigate(`/rooms/${room._id}`)
+                                        window.scrollTo(0, 0)
+                                    }}
+                                    className="text-gray-800 text-3xl font-playfair cursor-pointer"
+                                >
+                                    {room.hotel.name}
+                                </p>
 
-                            {/* Amenities */}
-                            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
-                                {room.amenities.map((item, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-center gap-2 px-3 py-2
+                                <div className="flex items-center">
+                                    <StarRating />
+                                    <p className="ml-2 text-sm">200+ reviews</p>
+                                </div>
+
+                                <div className="flex items-center gap-1 text-gray-500 mt-2 text-sm">
+                                    <img
+                                        src={assets.locationIcon}
+                                        alt="location"
+                                        className="w-4 h-4"
+                                    />
+                                    <span>{room.hotel.address}</span>
+                                </div>
+
+                                {/* Amenities */}
+                                <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+                                    {room.amenities.map((item, index) => (
+                                        <div
+                                            key={index}
+                                            className="flex items-center gap-2 px-3 py-2
                     rounded-lg bg-[#F5F5FF]/70"
-                                    >
-                                        <img
-                                            src={facilityIcons[item]}
-                                            alt={item}
-                                            className="w-5 h-5"
-                                        />
-                                        <p className="text-xs">{item}</p>
-                                    </div>
-                                ))}
+                                        >
+                                            <img
+                                                src={facilityIcons[item]}
+                                                alt={item}
+                                                className="w-5 h-5"
+                                            />
+                                            <p className="text-xs">{item}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <p className="text-xl font-medium text-gray-700">
+                                    ₹{room.pricePerNight}
+                                </p>
                             </div>
 
-                            <p className="text-xl font-medium text-gray-700">
-                                ₹{room.pricePerNight}
-                            </p>
                         </div>
-
-                    </div>
-                ))}
+                    ))}
 
                 {/* ---------------------------PG-3---------------------- */}
-                {pgrooms3DummyData.map((room) => (
+                {pgrooms3DummyData.slice().sort((a, b) => { if (selectedSort === "Price Low to High") { return a.pricePerNight - b.pricePerNight } if (selectedSort === "Price High to Low") { return b.pricePerNight - a.pricePerNight } if (selectedSort === "Newest First") { return new Date(b.createdAt) - new Date(a.createdAt) } return 0 }).filter(applyFilters).map((room) => (
                     <div
                         key={room._id}
                         className="flex flex-col md:flex-row items-start py-10 gap-6
@@ -304,7 +342,7 @@ const AllRooms = () => {
                 ))}
 
                 {/* ---------------------------PG-4---------------------- */}
-                {pgrooms4DummyData.map((room) => (
+                {pgrooms4DummyData.slice().sort((a, b) => { if (selectedSort === "Price Low to High") { return a.pricePerNight - b.pricePerNight } if (selectedSort === "Price High to Low") { return b.pricePerNight - a.pricePerNight } if (selectedSort === "Newest First") { return new Date(b.createdAt) - new Date(a.createdAt) } return 0 }).filter(applyFilters).map((room) => (
                     <div
                         key={room._id}
                         className="flex flex-col md:flex-row items-start py-10 gap-6
@@ -376,7 +414,7 @@ const AllRooms = () => {
                 ))}
 
                 {/* ---------------------------PG-5---------------------- */}
-                {pgrooms5DummyData.map((room) => (
+                {pgrooms5DummyData.slice().sort((a, b) => { if (selectedSort === "Price Low to High") { return a.pricePerNight - b.pricePerNight } if (selectedSort === "Price High to Low") { return b.pricePerNight - a.pricePerNight } if (selectedSort === "Newest First") { return new Date(b.createdAt) - new Date(a.createdAt) } return 0 }).filter(applyFilters).map((room) => (
                     <div
                         key={room._id}
                         className="flex flex-col md:flex-row items-start py-10 gap-6
@@ -448,7 +486,7 @@ const AllRooms = () => {
                 ))}
 
                 {/* ---------------------------PG-6---------------------- */}
-                {pgrooms6DummyData.map((room) => (
+                {pgrooms6DummyData.slice().sort((a, b) => { if (selectedSort === "Price Low to High") { return a.pricePerNight - b.pricePerNight } if (selectedSort === "Price High to Low") { return b.pricePerNight - a.pricePerNight } if (selectedSort === "Newest First") { return new Date(b.createdAt) - new Date(a.createdAt) } return 0 }).filter(applyFilters).map((room) => (
                     <div
                         key={room._id}
                         className="flex flex-col md:flex-row items-start py-10 gap-6
@@ -520,7 +558,7 @@ const AllRooms = () => {
                 ))}
 
                 {/* ---------------------------PG-7---------------------- */}
-                {pgrooms7DummyData.map((room) => (
+                {pgrooms7DummyData.slice().sort((a, b) => { if (selectedSort === "Price Low to High") { return a.pricePerNight - b.pricePerNight } if (selectedSort === "Price High to Low") { return b.pricePerNight - a.pricePerNight } if (selectedSort === "Newest First") { return new Date(b.createdAt) - new Date(a.createdAt) } return 0 }).filter(applyFilters).map((room) => (
                     <div
                         key={room._id}
                         className="flex flex-col md:flex-row items-start py-10 gap-6
@@ -592,7 +630,7 @@ const AllRooms = () => {
                 ))}
 
                 {/* ---------------------------PG-8---------------------- */}
-                {pgrooms8DummyData.map((room) => (
+                {pgrooms8DummyData.slice().sort((a, b) => { if (selectedSort === "Price Low to High") { return a.pricePerNight - b.pricePerNight } if (selectedSort === "Price High to Low") { return b.pricePerNight - a.pricePerNight } if (selectedSort === "Newest First") { return new Date(b.createdAt) - new Date(a.createdAt) } return 0 }).filter(applyFilters).map((room) => (
                     <div
                         key={room._id}
                         className="flex flex-col md:flex-row items-start py-10 gap-6
@@ -664,7 +702,7 @@ const AllRooms = () => {
                 ))}
 
                 {/* ---------------------------PG-9---------------------- */}
-                {pgrooms9DummyData.map((room) => (
+                {pgrooms9DummyData.slice().sort((a, b) => { if (selectedSort === "Price Low to High") { return a.pricePerNight - b.pricePerNight } if (selectedSort === "Price High to Low") { return b.pricePerNight - a.pricePerNight } if (selectedSort === "Newest First") { return new Date(b.createdAt) - new Date(a.createdAt) } return 0 }).filter(applyFilters).map((room) => (
                     <div
                         key={room._id}
                         className="flex flex-col md:flex-row items-start py-10 gap-6
@@ -754,7 +792,13 @@ const AllRooms = () => {
                         >
                             {openFilters ? 'HIDE' : 'SHOW'}
                         </span>
-                        <span className="hidden lg:block">CLEAR</span>
+                        <span
+                            onClick={clearFilters}
+                            className="hidden lg:block cursor-pointer"
+                        >
+                            CLEAR
+                        </span>
+
                     </div>
                 </div>
 
@@ -767,8 +811,20 @@ const AllRooms = () => {
                             Popular Filters
                         </p>
                         {roomTypes.map((room, index) => (
-                            <CheckBox key={index} label={room} />
+                            <CheckBox
+                                key={index}
+                                label={room}
+                                selected={selectedRoomTypes.includes(room)}
+                                onChange={() => {
+                                    setSelectedRoomTypes(prev =>
+                                        prev.includes(room)
+                                            ? prev.filter(item => item !== room)
+                                            : [...prev, room]
+                                    )
+                                }}
+                            />
                         ))}
+
                     </div>
 
                     <div className="px-5 pt-5">
@@ -776,17 +832,35 @@ const AllRooms = () => {
                             Price Ranges
                         </p>
                         {priceRanges.map((range, index) => (
-                            <CheckBox key={index} label={`₹ ${range}`} />
+                            <CheckBox
+                                key={index}
+                                label={range}   // ✅ REMOVE ₹ HERE
+                                selected={selectedPrices.includes(range)}
+                                onChange={() => {
+                                    setSelectedPrices(prev =>
+                                        prev.includes(range)
+                                            ? prev.filter(item => item !== range)
+                                            : [...prev, range]
+                                    )
+                                }}
+                            />
                         ))}
                     </div>
+
 
                     <div className="px-5 pt-5 pb-7">
                         <p className="font-medium text-gray-800 pb-2">
                             Sort By
                         </p>
                         {sortOptions.map((option, index) => (
-                            <RadioButton key={index} label={option} />
+                            <RadioButton
+                                key={index}
+                                label={option}
+                                selected={selectedSort === option}
+                                onChange={(value) => setSelectedSort(value)}
+                            />
                         ))}
+
                     </div>
                 </div>
             </div>

@@ -25,11 +25,35 @@ import menuIcon from './menuIcon.svg'
 import closeMenu from './closeMenu.svg'
 import guestsIcon from './guestsIcon.svg'
 import heroImage from './heroImage.png'
-import roomImg1 from './roomImg1.png'
-import roomImg2 from './roomImg2.png'
-import roomImg3 from './roomImg3.png'
-import roomImg4 from './roomImg4.png'
+// -------------------------------------
+import pg1roomImg1 from './roomImg1.png'
+import pg1roomImg2 from './roomImg2.png'
+// ------------------------------------
+import pg2roomImg1 from './roomImg3.png'
+import pg2roomImg2 from './roomImg4.png'
 // ----------------------------------------
+import pg3roomImg1 from './pg3roomImg1.png'
+import pg3roomImg2 from './pg3roomImg1.png'
+// ----------------------------------------
+import pg4roomImg1 from './pg4roomImg1.png'
+import pg4roomImg2 from './pg4roomImg1.png'
+// ----------------------------------------
+import pg5roomImg1 from './pg5roomImg1.png'
+import pg5roomImg2 from './pg5roomImg1.png'
+// ----------------------------------------
+import pg6roomImg1 from './pg6roomImg1.png'
+import pg6roomImg2 from './pg6roomImg1.png'
+// ----------------------------------------
+import pg7roomImg1 from './pg7roomImg1.png'
+import pg7roomImg2 from './pg7roomImg1.png'
+// ----------------------------------------
+import pg8roomImg1 from './pg8roomImg1.png'
+import pg8roomImg2 from './pg8roomImg1.png'
+// ----------------------------------------
+import pg9roomImg1 from './pg9roomImg1.png'
+import pg9roomImg2 from './pg9roomImg1.png'
+// ----------------------------------------
+
 import hostelRoom1Img from './hostelRoom1Img.png'
 import hostelRoom2Img from './hostelRoom2Img.png'
 import hostelRoom3Img from './hostelRoom3Img.png'
@@ -175,10 +199,10 @@ export const roomsDummyData = [
     {
         "_id": "pg1_details",
         "hotel": hotelDummyData,
-        "roomType": "Single Bed",
+        "roomType": "Ladies’ PG",
         "pricePerNight": 7999,
         "amenities": ["Room Service", "Food", "Wi-fi"],
-        "images": [roomImg1],
+        "images": [pg1roomImg1, pg1roomImg2],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
@@ -205,10 +229,10 @@ export const pgrooms2DummyData = [
     {
         "_id": "pg2_details",
         "hotel": hotel2DummyData,
-        "roomType": "Single Bed",
+        "roomType": "Ladies’ PG",
         "pricePerNight": 5999,
         "amenities": ["Room Service", "Food", "Wi-fi"],
-        "images": [roomImg1],
+        "images": [pg2roomImg1, pg2roomImg2],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
@@ -234,10 +258,10 @@ export const pgrooms3DummyData = [
     {
         "_id": "pg3_details",
         "hotel": hotel3DummyData,
-        "roomType": "Single Bed",
+        "roomType": "Ladies’ PG",
         "pricePerNight": 9999,
         "amenities": ["Room Service", "Food", "Wi-fi"],
-        "images": [roomImg1],
+        "images": [pg3roomImg1, pg4roomImg2],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
@@ -264,10 +288,10 @@ export const pgrooms4DummyData = [
     {
         "_id": "pg4_details",
         "hotel": hotel4DummyData,
-        "roomType": "Single Bed",
+        "roomType": "Men’s PG",
         "pricePerNight": 11999,
         "amenities": ["Room Service", "Food", "Wi-fi"],
-        "images": [roomImg1],
+        "images": [pg4roomImg1, pg5roomImg2],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
@@ -294,10 +318,10 @@ export const pgrooms5DummyData = [
     {
         "_id": "pg5_details",
         "hotel": hotel5DummyData,
-        "roomType": "Single Bed",
+        "roomType": "Men’s PG",
         "pricePerNight": 14999,
         "amenities": ["Room Service", "Food", "Wi-fi"],
-        "images": [roomImg1],
+        "images": [pg5roomImg1, pg6roomImg2],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
@@ -324,10 +348,10 @@ export const pgrooms6DummyData = [
     {
         "_id": "pg6_details",
         "hotel": hotel6DummyData,
-        "roomType": "Single Bed",
+        "roomType": "Men’s PG",
         "pricePerNight": 13999,
         "amenities": ["Room Service", "Food", "Wi-fi"],
-        "images": [roomImg1],
+        "images": [pg6roomImg1, pg7roomImg2],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
@@ -354,10 +378,10 @@ export const pgrooms7DummyData = [
     {
         "_id": "pg7_details",
         "hotel": hotel7DummyData,
-        "roomType": "Single Bed",
+        "roomType": "Co-Living PG",
         "pricePerNight": 17999,
         "amenities": ["Room Service", "Food", "Wi-fi"],
-        "images": [roomImg1],
+        "images": [pg7roomImg1, pg8roomImg2],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
@@ -384,10 +408,10 @@ export const pgrooms8DummyData = [
     {
         "_id": "pg8_details",
         "hotel": hotel8DummyData,
-        "roomType": "Single Bed",
+        "roomType": "Co-Living PG",
         "pricePerNight": 17999,
         "amenities": ["Room Service", "Food", "Wi-fi"],
-        "images": [roomImg1],
+        "images": [pg8roomImg1, pg9roomImg2],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
@@ -414,53 +438,17 @@ export const pgrooms9DummyData = [
     {
         "_id": "pg9_details",
         "hotel": hotel9DummyData,
-        "roomType": "Single Bed",
+        "roomType": "Co-Living PG",
         "pricePerNight": 15999,
         "amenities": ["Room Service", "Food", "Wi-fi"],
-        "images": [roomImg1],
+        "images": [pg9roomImg1, pg8roomImg2],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
         "__v": 0
     }
 ]
-// {
-//     "_id": "67f76452197ac559e4089b8e",
-//     "hotel": hotelDummyData,
-//     "roomType": "Double Bed",
-//     "pricePerNight": 18999,
-//     "amenities": ["Room Service", "Mountain View", "Pool Access"],
-//     "images": [roomImg2],
-//     "isAvailable": true,
-//     "createdAt": "2025-04-10T06:25:22.593Z",
-//     "updatedAt": "2025-04-10T06:25:22.593Z",
-//     "__v": 0
-// },
-// {
-//     "_id": "67f76406197ac559e4089b82",
-//     "hotel": hotelDummyData,
-//     "roomType": "Double Bed",
-//     "pricePerNight": 15999,
-//     "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
-//     "images": [roomImg3],
-//     "isAvailable": true,
-//     "createdAt": "2025-04-10T06:24:06.285Z",
-//     "updatedAt": "2025-04-10T06:24:06.285Z",
-//     "__v": 0
-// },
-// {
-//     "_id": "67f763d8197ac559e4089b7a",
-//     "hotel": hotelDummyData,
-//     "roomType": "Single Bed",
-//     "pricePerNight": 8999,
-//     "amenities": ["Free WiFi", "Room Service", "Pool Access"],
-//     "images": [roomImg4],
-//     "isAvailable": true,
-//     "createdAt": "2025-04-10T06:23:20.252Z",
-//     "updatedAt": "2025-04-10T06:23:20.252Z",
-//     "__v": 0
-// }
-// ]
+
 // --------------------------------PG-end------------------------------------------------------
 // --------------------------------hostel-------------------------------------------------------
 
