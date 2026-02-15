@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import {
     assets,
     facilityIcons,
@@ -8,127 +8,44 @@ import {
     pgrooms7DummyData, pgrooms8DummyData, pgrooms9DummyData, hostel2roomsDummyData,
     roomCommonData, hostel3roomsDummyData, hostel4roomsDummyData, hostel5roomsDummyData
 } from '../assets/assets';
-import StarRating from '../components/starRating'
+import StarRating from '../components/StarRating'
 
 const RoomDetails = () => {
-    const { id } = useParams()
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const [room, setRoom] = useState(null);
+    const [mainImage, setMainImage] = useState('');
 
-    const [room, setRoom] = useState(null)
-    const [mainImage, setMainImage] = useState('')
-    // ------------------------
+    // Merge all datasets into one
+    const allRooms = [
+        ...roomsDummyData,
+        ...pgrooms2DummyData,
+        ...pgrooms3DummyData,
+        ...pgrooms4DummyData,
+        ...pgrooms5DummyData,
+        ...pgrooms6DummyData,
+        ...pgrooms7DummyData,
+        ...pgrooms8DummyData,
+        ...pgrooms9DummyData,
+        ...hostelroomsDummyData,
+        ...hostel2roomsDummyData,
+        ...hostel3roomsDummyData,
+        ...hostel4roomsDummyData,
+        ...hostel5roomsDummyData,
+    ];
+
     useEffect(() => {
-        const foundRoom = roomsDummyData.find((r) => r._id === id)
+        const foundRoom = allRooms.find(r => r._id === id);
         if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
+            setRoom(foundRoom);
+            setMainImage(foundRoom.images[0]);
         }
-    }, [id])
-    // --------------------------------
-    useEffect(() => {
-        const foundRoom = pgrooms2DummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------------------
-    useEffect(() => {
-        const foundRoom = pgrooms3DummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------------------
-    useEffect(() => {
-        const foundRoom = pgrooms4DummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------------------------
-    useEffect(() => {
-        const foundRoom = pgrooms5DummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------------
-    useEffect(() => {
-        const foundRoom = pgrooms6DummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------
-    useEffect(() => {
-        const foundRoom = pgrooms7DummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------
-    useEffect(() => {
-        const foundRoom = pgrooms8DummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------
-    useEffect(() => {
-        const foundRoom = pgrooms9DummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------
-    useEffect(() => {
-        const foundRoom = hostelroomsDummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------
-    useEffect(() => {
-        const foundRoom = hostel2roomsDummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------
-    useEffect(() => {
-        const foundRoom = hostel3roomsDummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------
-    useEffect(() => {
-        const foundRoom = hostel4roomsDummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
-    // ---------------------------------
-    useEffect(() => {
-        const foundRoom = hostel5roomsDummyData.find((r) => r._id === id)
-        if (foundRoom) {
-            setRoom(foundRoom)
-            setMainImage(foundRoom.images[0])
-        }
-    }, [id])
+    }, [id]);
 
     if (!room) return null
+
+    // const navigate = useNavigate();
+
 
     return (
         <div className="py-28 px-4 md:px-16 lg:px-24 xl:px-32">
@@ -248,15 +165,37 @@ const RoomDetails = () => {
 
             <div className="mt-6">
                 <button
-                    type="submit"
-                    className="bg-primary text-white w-full py-3 rounded-lg 
-                    text-lg font-semibold hover:bg-primary-dull 
-                    transition-all duration-300"
+                    type="button"
+                    onClick={async () => {
+                        try {
+                            const token = await getToken(); // your auth token
+                            const { data } = await axios.post(
+                                "/api/bookings/book",
+                                {
+                                    room: room._id,
+                                    guests: 1 // change if you want dynamic guests
+                                },
+                                {
+                                    headers: { Authorization: `Bearer ${token}` }
+                                }
+                            );
 
-
+                            if (data.success) {
+                                toast.success(data.message);
+                                navigate("/my-bookings");
+                            } else {
+                                toast.error(data.message);
+                            }
+                        } catch (error) {
+                            toast.error(error.response?.data?.message || "Booking failed");
+                        }
+                    }}
+                    className="bg-primary text-white w-full py-3 rounded-lg text-lg font-semibold hover:bg-primary-dull transition-all duration-300"
                 >
                     Book Now
                 </button>
+
+
             </div>
 
 

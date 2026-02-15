@@ -6,7 +6,7 @@ import {
     pgrooms9DummyData
 } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
-import StarRating from '../components/starRating'
+import StarRating from '../components/StarRating'
 
 /* ---------- Checkbox Component ---------- */
 const CheckBox = ({ label, selected = false, onChange = () => { } }) => {
@@ -783,7 +783,7 @@ const AllRooms = () => {
                     className={`flex items-center justify-between px-5 py-2.5
           border-gray-300 ${openFilters ? 'border-b' : ''}`}
                 >
-                    <p className="text-base font-medium text-gray-800">FILTERS</p>
+                    <p className="text-xl  font-medium text-gray-800">FILTERS</p>
 
                     <div className="text-xs cursor-pointer">
                         <span
@@ -807,8 +807,8 @@ const AllRooms = () => {
                         } overflow-hidden transition-all duration-700`}
                 >
                     <div className="px-5 pt-5">
-                        <p className="font-medium text-gray-800 pb-2">
-                            Popular Filters
+                        <p className="font-xl  text-gray-800 pb-2">
+                            Type's
                         </p>
                         {roomTypes.map((room, index) => (
                             <CheckBox

@@ -1,10 +1,70 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { roomsDummyData } from '../../assets/assets'
 import Title from '../../components/Title'
+import { useAppContext } from '../../context/AppContext'
+import toast from 'react-hot-toast'
 
 const ListRoom = () => {
 
-    const [rooms] = useState(roomsDummyData)
+    const [rooms, setRooms] = useState(roomsDummyData)
+    const { axios, getToken, user } = useAppContext()
+
+    const fetchRooms = async () => {
+        try {
+            const token = await getToken()
+
+            const { data } = await axios.get(
+                '/api/rooms/owner',
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
+
+            if (data.success) {
+                setRooms(data.rooms)
+            } else {
+                toast.error(data.message)
+            }
+
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
+    // ✅ Toggle Availability
+    const toggleAvailability = async (roomId) => {
+        try {
+            const token = await getToken()
+
+            const { data } = await axios.post(
+                '/api/rooms/toggle-availability',
+                { roomId },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
+
+            if (data.success) {
+                toast.success(data.message)
+                fetchRooms() // refresh list
+            } else {
+                toast.error(data.message)
+            }
+
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
+    useEffect(() => {
+        if (user) {
+            fetchRooms()
+        }
+    }, [user])
 
     return (
         <div className="flex flex-col-reverse lg:flex-row items-start justify-between
@@ -15,7 +75,7 @@ const ListRoom = () => {
                     align="left"
                     font="outfit"
                     title="Room Listings"
-                    subTitle="View, edit, or manage all listed rooms. Keep the information up-to-date to provide the best experience for users."
+                    subTitle="View, edit, or manage all listed rooms."
                 />
 
                 <p className="text-lg text-gray-500 mt-10">
@@ -42,14 +102,14 @@ const ListRoom = () => {
                         </thead>
 
                         <tbody className="text-base">
-                            {rooms.map((item, index) => (
-                                <tr key={index} className="hover:bg-gray-50">
+                            {rooms.map((item) => (
+                                <tr key={item._id} className="hover:bg-gray-50">
                                     <td className="py-4 px-6 text-gray-700 border-t">
                                         {item.roomType}
                                     </td>
 
                                     <td className="py-4 px-6 text-gray-700 border-t max-sm:hidden">
-                                        {item.amenities.join(', ')}
+                                        {item.amenities?.join(', ')}
                                     </td>
 
                                     <td className="py-4 px-6 text-gray-700 border-t font-medium">
@@ -62,7 +122,9 @@ const ListRoom = () => {
                                                 type="checkbox"
                                                 className="sr-only peer"
                                                 checked={item.isAvailable}
-                                                readOnly
+                                                onChange={() =>
+                                                    toggleAvailability(item._id)
+                                                }
                                             />
                                             <div className="w-14 h-8 bg-slate-300 rounded-full peer-checked:bg-blue-600 transition-colors duration-200"></div>
                                             <span className="absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition-transform duration-200 peer-checked:translate-x-6"></span>
@@ -71,6 +133,7 @@ const ListRoom = () => {
                                 </tr>
                             ))}
                         </tbody>
+
                     </table>
                 </div>
             </div>

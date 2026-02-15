@@ -5,7 +5,7 @@ import {
     hostel4roomsDummyData, hostel5roomsDummyData
 } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
-import StarRating from '../components/starRating'
+import StarRating from '../components/StarRating'
 
 /* ---------- Checkbox Component ---------- */
 const CheckBox = ({ label, selected = false, onChange = () => { } }) => {
@@ -566,8 +566,7 @@ const HostelRooms = () => {
 
             {/* --------------------------------------------------------------------------------- */}
             {/* ---------- Filters Section ---------- */}
-            <div className="bg-white w-80 border border-gray-300 text-gray-600
-                 max-lg:mb-8 lg:mt-16"
+            < div className="bg-white w-80 border border-gray-300 text-gray-600 max-lg:mb-8 lg:mt-16"
             >
                 <div
                     className={`flex items-center justify-between px-5 py-2.5

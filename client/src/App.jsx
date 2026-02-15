@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
+// import Login from './pages/Login'
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -17,24 +18,29 @@ import Layout from './pages/Owner/Layout'
 import Dashboard from './pages/Owner/Dashboard'
 import ListRoom from './pages/Owner/ListRoom'
 import AddRoom from './pages/Owner/AddRoom'
+import { Toaster } from "react-hot-toast";
+import { useAppContext } from "./context/AppContext";
+
 
 const App = () => {
   const location = useLocation()
 
   // hide navbar/footer ONLY if you want later (optional)
   const hideLayout = false
+  const { showHotelReg } = useAppContext();
 
   return (
     <div className="flex flex-col min-h-screen">
-
+      <Toaster />
       {!hideLayout && <Navbar />}
-      {false && <HotelReg />}
+      {showHotelReg && <HotelReg />}
 
       <div className="flex-1">
         <Routes>
 
           {/* User Routes */}
           <Route path="/" element={<Home />} />
+          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/rooms" element={<AllRooms />} />
           <Route path="/hostel" element={<HostelRooms />} />
           <Route path="/about" element={<About />} />

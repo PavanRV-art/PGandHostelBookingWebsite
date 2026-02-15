@@ -1,22 +1,61 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Title from '../components/Title'
-import { assets, userBookingsDummyData } from '../assets/assets'
+import { assets } from '../assets/assets'
+import { useAppContext } from '../context/AppContext'
+import { toast } from 'react-toastify'
 
 const MyBookings = () => {
-    const [bookings, setBookings] = useState(userBookingsDummyData)
+    const { axios, getToken, user } = useAppContext()
+    const [bookings, setBookings] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+
+    const fetchUserBooking = async () => {
+        setLoading(true)
+        setError(null)
+        try {
+            const token = await getToken()
+            const { data } = await axios.get('/api/bookings/user', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+
+            if (data.success) {
+                setBookings(data.bookings)
+            } else {
+                toast.error(data.message)
+                setError(data.message)
+            }
+        } catch (err) {
+            const message = err.response?.data?.message || err.message
+            toast.error(message)
+            setError(message)
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    useEffect(() => {
+        fetchUserBooking()
+    }, [])
+
+    if (loading) return <p className="text-center mt-10">Loading your bookings...</p>
+    if (error) return <p className="text-center mt-10 text-red-500">{error}</p>
+    if (bookings.length === 0) return <p className="text-center mt-10">No bookings found.</p>
 
     return (
         <div className="py-28 md:pb-35 md:pt-32 px-4 md:px-16 lg:px-24 xl:px-32">
             <Title
-                title="Bookings history"
-                subTitle="Easily manage your past, current, and upcoming PG and Hostel reservations in one place. Plan your trips seamlessly with just a few clicks"
-                align="left"
+                title="Bookings History"
+                subTitle="Easily manage your past, current, and upcoming PG and Hostel reservations in one place."
+                align="center"
             />
 
-            <div className="max-w-6xl mt-8 w-full text-gray-800">
+            <div className="max-w-6xl mt-8 w-full mx-auto text-gray-800">
                 {/* Header */}
                 <div className="hidden md:grid md:grid-cols-[3fr_2fr_1fr] border-b border-gray-300 font-medium py-3">
-                    <div></div>
+                    <div>Hotel Details</div>
                     <div>Date & Timings</div>
                     <div>Payment</div>
                 </div>
@@ -27,9 +66,9 @@ const MyBookings = () => {
                         className="grid grid-cols-1 md:grid-cols-[3fr_2fr_1fr] border-b border-gray-300 py-6 first:border-t"
                     >
                         {/* Hotel Details */}
-                        <div className="flex flex-col md:flex-row gap-4">
+                        <div className="flex flex-col md:flex-row gap-6">
                             <img
-                                src={booking.room?.images?.[0]}
+                                src={booking.room?.images?.[0] || assets.defaultHotelImage}
                                 alt="hotel"
                                 className="md:w-44 rounded shadow object-cover"
                             />
@@ -38,19 +77,19 @@ const MyBookings = () => {
                                 <p className="font-playfair text-2xl">
                                     {booking.hotel?.name}
                                     <span className="font-inter text-sm ml-1">
-                                        {/* ({booking.room?.roomType}) */}
+                                        ({booking.room?.roomType})
                                     </span>
                                 </p>
 
                                 <div className="flex items-center gap-1 text-sm text-gray-500">
-                                    <img src={assets.guestsIcon} alt="hellllo" />
-                                    {/* <span>Guests: {booking.guests}</span> */}
+                                    <img src={assets.guestsIcon} alt="guests" />
+                                    <span>Guests: {booking.guests}</span>
                                 </div>
 
                                 <p className="text-base">Total: ₹{booking.totalPrice}</p>
 
                                 <div className="flex items-center gap-1 text-sm text-gray-500">
-                                    <img src={assets.locationIcon} alt="" />
+                                    <img src={assets.locationIcon} alt="location" />
                                     <span>{booking.hotel?.address}</span>
                                 </div>
                             </div>
