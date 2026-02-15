@@ -32,12 +32,13 @@ export const AppProvider = ({ children }) => {
             if (data.success) {
                 setIsOwner(data.role === "hotelOwner");
                 setSearchedCities(data.recentSearchedCities || []);
-            } else {
-                // Retry after 5 seconds
-                setTimeout(() => {
-                    fetchUser();
-                }, 5000);
             }
+            // else {
+            //     // Retry after 5 seconds
+            //     // setTimeout(() => {
+            //     //     fetchUser();
+            //     // }, 5000);
+            // }
 
         } catch (error) {
             toast.error(error.message);

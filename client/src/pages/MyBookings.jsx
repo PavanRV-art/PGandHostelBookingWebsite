@@ -37,8 +37,11 @@ const MyBookings = () => {
     }
 
     useEffect(() => {
-        fetchUserBooking()
-    }, [])
+        if (user) {
+            fetchUserBooking()
+        }
+    }, [user])
+
 
     if (loading) return <p className="text-center mt-10">Loading your bookings...</p>
     if (error) return <p className="text-center mt-10 text-red-500">{error}</p>

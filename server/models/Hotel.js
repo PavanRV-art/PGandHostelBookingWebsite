@@ -10,8 +10,12 @@ const hotelSchema = new mongoose.Schema({
         required: true,
         ref: "User"
     },
-
     city: { type: String, required: true },
+    state: String,
+    pricePerNight: Number,
+    image: String,
+    ownerEmail: String,
+    ownerName: String,
 
 }, { timestamps: true });
 

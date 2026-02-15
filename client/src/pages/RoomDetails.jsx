@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { useAppContext } from '../context/AppContext'
+import toast from 'react-hot-toast'
 import {
     assets,
     facilityIcons,
@@ -13,6 +15,7 @@ import StarRating from '../components/StarRating'
 const RoomDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { axios, getToken } = useAppContext()
     const [room, setRoom] = useState(null);
     const [mainImage, setMainImage] = useState('');
 
@@ -40,11 +43,15 @@ const RoomDetails = () => {
             setRoom(foundRoom);
             setMainImage(foundRoom.images[0]);
         }
-    }, [id]);
+    }, [id, allRooms]);
+
 
     if (!room) return null
 
+
+
     // const navigate = useNavigate();
+
 
 
     return (

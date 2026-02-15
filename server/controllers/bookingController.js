@@ -23,7 +23,7 @@ export const createBooking = async (req, res) => {
             user: userId,
             room,
             hotel: roomData.hotel._id,
-            guests: Number(guests),
+            // guests: Number(guests),
             totalPrice,
         });
 
@@ -75,5 +75,35 @@ export const getUserBookings = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: error.message || "Failed to fetch bookings" });
+    }
+};
+
+export const stripePayment = async (req, res) => {
+    try {
+        const { bookingId } = req.body;
+
+        // 1️⃣ Find booking
+        const bookingData = await Booking.findById(bookingId);
+        if (!bookingData) {
+            return res.status(404).json({ success: false, message: "Booking not found" });
+        }
+
+        // 2️⃣ Create Stripe Payment Intent
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: bookingData.totalPrice * 100, // convert to paise
+            currency: "inr",
+            metadata: {
+                bookingId: bookingData._id.toString(),
+            },
+        });
+
+        res.json({
+            success: true,
+            clientSecret: paymentIntent.client_secret,
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: error.message });
     }
 };

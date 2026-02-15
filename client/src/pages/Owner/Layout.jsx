@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
-import NavBar from '../../components/Owner/Navbar'
+import Navbar from '../../components/Owner/Navbar'
 import Sidebar from '../../components/Owner/Sidebar'
 import { useAppContext } from '../../context/AppContext'
 
@@ -16,7 +16,7 @@ const Layout = () => {
 
     return (
         <div className='flex flex-col min-h-screen'>
-            <NavBar />
+            <Navbar />
 
             <div className="flex flex-1">
                 <Sidebar />

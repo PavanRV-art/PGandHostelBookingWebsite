@@ -2,7 +2,7 @@ import Hotel from "../models/Hotel.js";
 import { clerkClient } from "@clerk/clerk-sdk-node";
 
 // Create Hotel
-export const createHotel = async (req, res) => {
+export const registerHotel = async (req, res) => {
     try {
         const ownerId = req.auth.userId;
 
